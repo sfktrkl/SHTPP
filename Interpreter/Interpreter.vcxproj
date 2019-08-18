@@ -70,23 +70,23 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\$(Configuration)\</OutDir>
-    <IntDir>..\$(Configuration)\</IntDir>
+    <OutDir>..\$(Configuration)\Interpreter\</OutDir>
+    <IntDir>..\$(Configuration)\Interpreter\</IntDir>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\$(Configuration)\</OutDir>
-    <IntDir>..\$(Configuration)\</IntDir>
+    <OutDir>..\$(Configuration)\Interpreter\</OutDir>
+    <IntDir>..\$(Configuration)\Interpreter\</IntDir>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\$(Configuration)\</OutDir>
-    <IntDir>..\$(Configuration)\</IntDir>
+    <OutDir>..\$(Configuration)\Interpreter\</OutDir>
+    <IntDir>..\$(Configuration)\Interpreter\</IntDir>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\$(Configuration)\</OutDir>
-    <IntDir>..\$(Configuration)\</IntDir>
+    <OutDir>..\$(Configuration)\Interpreter\</OutDir>
+    <IntDir>..\$(Configuration)\Interpreter\</IntDir>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

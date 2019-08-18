@@ -49,9 +49,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InterpreterClassLibrary, Version=1.0.7169.38314, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Debug\InterpreterClassLibrary.dll</HintPath>
+    <Reference Include="InterpreterClassLibrary">
+      <HintPath>..\Debug\InterpreterCLI\InterpreterClassLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
