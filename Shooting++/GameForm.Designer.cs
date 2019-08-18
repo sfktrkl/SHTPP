@@ -35,11 +35,15 @@
             this.back = new Shooting__.ClickableLabel();
             this.save = new Shooting__.ClickableLabel();
             this.run = new Shooting__.ClickableLabel();
+            this.renderAreaa = new System.Windows.Forms.PictureBox();
+            this.OSGPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.renderAreaa)).BeginInit();
             this.SuspendLayout();
             // 
             // OSGPanel
             // 
             this.OSGPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.OSGPanel.Controls.Add(this.renderAreaa);
             this.OSGPanel.Location = new System.Drawing.Point(600, 150);
             this.OSGPanel.Name = "OSGPanel";
             this.OSGPanel.Size = new System.Drawing.Size(800, 600);
@@ -111,6 +115,15 @@
             this.run.Text = "Run";
             this.run.Click += new System.EventHandler(this.run_Click);
             // 
+            // renderAreaa
+            // 
+            this.renderAreaa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderAreaa.Location = new System.Drawing.Point(0, 0);
+            this.renderAreaa.Name = "renderAreaa";
+            this.renderAreaa.Size = new System.Drawing.Size(800, 600);
+            this.renderAreaa.TabIndex = 0;
+            this.renderAreaa.TabStop = false;
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -131,6 +144,8 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameForm";
+            this.OSGPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.renderAreaa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +160,6 @@
         private ClickableLabel run;
         private ClickableLabel save;
         private ClickableLabel back;
+        private System.Windows.Forms.PictureBox renderAreaa;
     }
 }

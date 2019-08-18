@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
 using InterpreterClassLibrary;
+using OSGViewClassLibrary;
 
 namespace Shooting__
 {
     public partial class GameForm : Form
     {
+        private OSGViewClassWrapper osgWrapper = new OSGViewClassWrapper();
+
         public GameForm(MissionDatabase.Data data)
         {
             InitializeComponent();
@@ -18,6 +21,14 @@ namespace Shooting__
                 this.codeText.Text = content;
             else
                 this.codeText.Text = data.code;
+
+            renderAreaa.Paint += new PaintEventHandler(Painter);
+        }
+
+        private void Painter(object sender, PaintEventArgs e)
+        {
+            // Renders the OSG Viewer into the drawing area
+            osgWrapper.Render(renderAreaa.Handle);
         }
 
         private void CallWrapper (string file)
@@ -49,6 +60,7 @@ namespace Shooting__
 
         private void back_Click(object sender, EventArgs e)
         {
+            osgWrapper.Destroy();
             UiManager.CloseGameForm();
         }
     }
