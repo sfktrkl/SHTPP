@@ -32,8 +32,9 @@
             this.codeText = new System.Windows.Forms.RichTextBox();
             this.title = new System.Windows.Forms.Label();
             this.missionNote = new System.Windows.Forms.Label();
-            this.run = new Shooting__.ClickableLabel();
+            this.back = new Shooting__.ClickableLabel();
             this.save = new Shooting__.ClickableLabel();
+            this.run = new Shooting__.ClickableLabel();
             this.SuspendLayout();
             // 
             // OSGPanel
@@ -77,16 +78,16 @@
             this.missionNote.TabIndex = 3;
             this.missionNote.Text = "Mission Note: ";
             // 
-            // run
+            // back
             // 
-            this.run.AutoSize = true;
-            this.run.Font = new System.Drawing.Font("Algerian", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.run.Location = new System.Drawing.Point(260, 775);
-            this.run.Name = "run";
-            this.run.Size = new System.Drawing.Size(84, 39);
-            this.run.TabIndex = 5;
-            this.run.Text = "Run";
-            this.run.Click += new System.EventHandler(this.run_Click);
+            this.back.AutoSize = true;
+            this.back.Font = new System.Drawing.Font("Algerian", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.back.Location = new System.Drawing.Point(1307, 817);
+            this.back.Name = "back";
+            this.back.Size = new System.Drawing.Size(105, 35);
+            this.back.TabIndex = 7;
+            this.back.Text = "Back";
+            this.back.Click += new System.EventHandler(this.back_Click);
             // 
             // save
             // 
@@ -99,11 +100,24 @@
             this.save.Text = "Save";
             this.save.Click += new System.EventHandler(this.save_Click);
             // 
+            // run
+            // 
+            this.run.AutoSize = true;
+            this.run.Font = new System.Drawing.Font("Algerian", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.run.Location = new System.Drawing.Point(260, 775);
+            this.run.Name = "run";
+            this.run.Size = new System.Drawing.Size(84, 39);
+            this.run.TabIndex = 5;
+            this.run.Text = "Run";
+            this.run.Click += new System.EventHandler(this.run_Click);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1424, 861);
+            this.ControlBox = false;
+            this.Controls.Add(this.back);
             this.Controls.Add(this.save);
             this.Controls.Add(this.run);
             this.Controls.Add(this.missionNote);
@@ -130,5 +144,6 @@
         private System.Windows.Forms.Label missionNote;
         private ClickableLabel run;
         private ClickableLabel save;
+        private ClickableLabel back;
     }
 }

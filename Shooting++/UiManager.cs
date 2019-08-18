@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Shooting__
 {
@@ -7,31 +8,51 @@ namespace Shooting__
         public static Form mainForm { get; set; }
         public static Form currentForm { get; set; }
 
-        public static void Init(Form form)
+        public static Form Init()
         {
-            mainForm = form;
-            currentForm = form;
+            mainForm = new LoginForm();
+            mainForm.Show();
+            currentForm = mainForm;
+            return mainForm;
         }
 
-        public static void CloseForm()
+        public static void CloseGameForm()
         {
+            currentForm.FormClosing -= new FormClosingEventHandler(ClosingGameForm);
             currentForm.Close();
+            CreateMissionForm();
+        }
+
+        public static void CloseLoginForm()
+        {
+            mainForm.Close();
+        }
+
+        public static void CloseMissionForm(object sender, FormClosingEventArgs e)
+        {
+            mainForm.Close();
+        }
+
+        public static void ClosingGameForm(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
         }
 
         public static void CreateMissionForm()
         {
             mainForm.Hide();
-            MissionForm missions = new MissionForm();
-            missions.Show();
-            currentForm = missions;
+            currentForm = new MissionForm();
+            currentForm.Show();
+            currentForm.FormClosing += new FormClosingEventHandler(CloseMissionForm);
         }
 
         public static void CreateGameForm(MissionDatabase.Data data)
         {
+            currentForm.FormClosing -= new FormClosingEventHandler(CloseMissionForm);
             currentForm.Close();
-            GameForm game = new GameForm(data);
-            game.ShowDialog();
-            currentForm = game;
+            currentForm = new GameForm(data);
+            currentForm.Show();
+            currentForm.FormClosing += new FormClosingEventHandler(ClosingGameForm);
         }
     }
 }

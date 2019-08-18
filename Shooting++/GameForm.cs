@@ -46,5 +46,10 @@ namespace Shooting__
             string content = this.codeText.Text.ToUpper();
             FileReadWrite.WriteFile(content, this.Text.ToString());
         }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            UiManager.CloseGameForm();
+        }
     }
 }

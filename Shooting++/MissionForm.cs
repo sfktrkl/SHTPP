@@ -57,5 +57,10 @@ namespace Shooting__
             Mission mission = new Mission("m2");
             UiManager.CreateGameForm(mission.GetMission());
         }
+
+        private void quit_Click(object sender, EventArgs e)
+        {
+            UiManager.CloseMissionForm(null, null);
+        }
     }
 }

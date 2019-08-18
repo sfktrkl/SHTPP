@@ -39,6 +39,7 @@
             this.tutorial1 = new Shooting__.ClickableLabel();
             this.mission1 = new Shooting__.ClickableLabel();
             this.mission2 = new Shooting__.ClickableLabel();
+            this.quit = new Shooting__.ClickableLabel();
             this.SuspendLayout();
             // 
             // title
@@ -160,11 +161,24 @@
             this.mission2.Text = "- MIssion 2";
             this.mission2.Click += new System.EventHandler(this.mission2_Click);
             // 
-            // MissionScreen
+            // quit
+            // 
+            this.quit.AutoSize = true;
+            this.quit.Font = new System.Drawing.Font("Algerian", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quit.Location = new System.Drawing.Point(735, 467);
+            this.quit.Name = "quit";
+            this.quit.Size = new System.Drawing.Size(37, 35);
+            this.quit.TabIndex = 12;
+            this.quit.Text = "Q";
+            this.quit.Click += new System.EventHandler(this.quit_Click);
+            // 
+            // MissionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 511);
+            this.ControlBox = false;
+            this.Controls.Add(this.quit);
             this.Controls.Add(this.mission2);
             this.Controls.Add(this.mission1);
             this.Controls.Add(this.tutorial6);
@@ -179,7 +193,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MissionScreen";
+            this.Name = "MissionForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Missions";
@@ -201,5 +215,6 @@
         private ClickableLabel tutorial6;
         private ClickableLabel mission1;
         private ClickableLabel mission2;
+        private ClickableLabel quit;
     }
 }

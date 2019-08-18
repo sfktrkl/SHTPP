@@ -112,7 +112,7 @@
             this.quit.Text = "Q";
             this.quit.Click += new System.EventHandler(this.quit_Click);
             // 
-            // Login
+            // LoginForm
             // 
             this.AcceptButton = this.Start;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,7 +129,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Login";
+            this.Name = "LoginForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

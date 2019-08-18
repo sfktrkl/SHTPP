@@ -11,7 +11,6 @@ namespace Shooting__
         public LoginForm()
         {
             InitializeComponent();
-            UiManager.Init(this);
         }
 
         private void start_Click(object sender, EventArgs e)
@@ -62,6 +61,8 @@ namespace Shooting__
                 if (HashGenerator.VerifyHash(read[0], id) && HashGenerator.VerifyHash(read[1], pw))
                 {
                     UiManager.CreateMissionForm();
+                    this.idBox.Text = "";
+                    this.pwBox.Text = "";
                 }
                 else
                 {
@@ -76,7 +77,8 @@ namespace Shooting__
 
         private void quit_Click(object sender, EventArgs e)
         {
-            UiManager.CloseForm();
+            UiManager.CloseLoginForm();
         }
+
     }
 }
