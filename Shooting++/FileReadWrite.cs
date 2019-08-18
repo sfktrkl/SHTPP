@@ -4,14 +4,8 @@ using System.IO;
 
 namespace Shooting__
 {
-    public class FileReadWrite
+    public static class FileReadWrite
     {
-        public FileReadWrite(string id, string pw)
-        {
-            this.userDirectory = directory + "\\" + id;
-            this.userFile = userDirectory + "\\" + id + ".sht";
-        }
-
         public enum FileCondition
         {
             DirectoryNotExist,
@@ -19,8 +13,11 @@ namespace Shooting__
             FileNotExist,
         }
 
-        public FileCondition CheckFile()
+        public static FileCondition CheckLoginFile(string id, string pw)
         {
+            userDirectory = directory + "\\" + id;
+            userFile = userDirectory + "\\" + id + ".sht";
+
             FileCondition condition;
 
             if (!Directory.Exists(userDirectory))
@@ -36,7 +33,7 @@ namespace Shooting__
             return condition;
         }
 
-        public List<string> ReadFile()
+        public static List<string> ReadLoginFile(string id, string pw)
         {
             List<string> read = new List<string>();
             // Open the stream and read it back.
@@ -52,7 +49,7 @@ namespace Shooting__
             return read;
         }
 
-        public void WriteFile(List<string> inputs)
+        public static void WriteLoginFile(List<string> inputs, string id, string pw)
         {
             // Create the file.
             Directory.CreateDirectory(userDirectory);
@@ -70,8 +67,65 @@ namespace Shooting__
             FileEncrypterDecrypter.FileEncrypt(sw.ToString(), userFile);
         }
 
-        private readonly string userDirectory;
-        private readonly string userFile;
-        private readonly string directory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Shoot++";
+        public static FileCondition CheckFile(string fileDir, string fileName)
+        {
+            FileCondition condition;
+
+            if (!Directory.Exists(fileDir))
+                condition = FileCondition.DirectoryNotExist;
+            else
+            {
+                if (File.Exists(fileName))
+                    condition = FileCondition.FileExist;
+                else
+                    condition = FileCondition.FileNotExist;
+            }
+
+            return condition;
+        }
+
+        public static string ReadFile(string fileName)
+        {
+            string file = userDirectory + "\\" + fileName + ".sfk";
+
+            FileCondition condition = CheckFile(userDirectory, file);
+
+            if (condition == FileCondition.FileExist)
+            {
+                string text = File.ReadAllText(file);
+                return text;
+            }
+
+            return null;
+        }
+
+        public static string WriteFile(string content, string fileName)
+        {
+            string file = userDirectory + "\\" + fileName + ".sfk";
+
+            FileCondition condition = CheckFile(userDirectory, file);
+
+            if (condition == FileCondition.DirectoryNotExist)
+            {
+                Directory.CreateDirectory(userDirectory);
+                FileStream fs = File.Create(file);
+                fs.Close();
+            }
+            else if (condition == FileCondition.FileNotExist)
+            {
+                FileStream fs = File.Create(fileName);
+                fs.Close();
+            }
+
+            StreamWriter sw = new StreamWriter(file);
+            sw.Write(content);
+            sw.Close();
+
+            return file;
+        }
+
+        private static string userDirectory;
+        private static string userFile;
+        private static readonly string directory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Shoot++";
     }
 }

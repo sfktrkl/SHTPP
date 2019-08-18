@@ -10,13 +10,15 @@ namespace Shooting__
             public string note;
             public List<string> variableList;
             public List<string> aimList;
+            public string code;
 
-            public Data(string name, string note, List<string> variableList, List<string> aimList)
+            public Data(string name, string note, List<string> variableList, List<string> aimList, string code)
             {
                 this.name = name;
                 this.note = note;
                 this.variableList = variableList;
                 this.aimList = aimList;
+                this.code = code;
             }
         }
 
@@ -26,35 +28,10 @@ namespace Shooting__
         {
             database.Add("t1", new Data("Tutorial 1", "This tutorials is made to ",
                 new List<string> { "input" },
-                new List<string> { "output" }));
-
-            database.Add("t2", new Data("Tutorial 2", "This tutorials is made to ",
-                 new List<string> { "input" },
-                 new List<string> { "output" }));
-
-            database.Add("t3", new Data("Tutorial 3", "This tutorials is made to ",
-                 new List<string> { "input" },
-                 new List<string> { "output" }));
-
-            database.Add("t4", new Data("Tutorial 4", "This tutorials is made to ",
-                 new List<string> { "input" },
-                 new List<string> { "output" }));
-
-            database.Add("t5", new Data("Tutorial 5", "This tutorials is made to ",
-                 new List<string> { "input" },
-                 new List<string> { "output" }));
-
-            database.Add("t6", new Data("Tutorial 6", "This tutorials is made to ",
-                new List<string> { "input" },
-                new List<string> { "output" }));
-
-            database.Add("m1", new Data("Mission 1", "This tutorials is made to ",
-                new List<string> { "input" },
-                new List<string> { "output" }));
-
-            database.Add("m2", new Data("Mission 2", "This tutorials is made to ",
-                new List<string> { "input" },
-                new List<string> { "output" }));
+                new List<string> { "output" },
+                "#Example:\n" + 
+                "SHOOT 10"
+                ));
         }
 
         public static Data GetMission(string mission)

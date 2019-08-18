@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using InterpreterClassLibrary;
+
 
 namespace Shooting__
 {
@@ -9,7 +11,7 @@ namespace Shooting__
         public LoginForm()
         {
             InitializeComponent();
-            UiManager.mainForm = this;
+            UiManager.Init(this);
         }
 
         private void start_Click(object sender, EventArgs e)
@@ -29,8 +31,7 @@ namespace Shooting__
                 return;
             }
 
-            var fileReadWrite = new FileReadWrite(id, pw);
-            var condition = fileReadWrite.CheckFile();
+            var condition = FileReadWrite.CheckLoginFile(id, pw);
 
             if (condition == FileReadWrite.FileCondition.DirectoryNotExist)
             {
@@ -40,7 +41,7 @@ namespace Shooting__
                     "No User Account", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    fileReadWrite.WriteFile(new List<string> { id, pw, "0" });
+                    FileReadWrite.WriteLoginFile(new List<string> { id, pw, "0" }, id, pw);
                 }
             }
             else if (condition == FileReadWrite.FileCondition.FileNotExist)
@@ -51,12 +52,12 @@ namespace Shooting__
                                     "No User File", MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Exclamation) == DialogResult.Yes)
                 {
-                    fileReadWrite.WriteFile(new List<string> { id, pw, "0" });
+                    FileReadWrite.WriteLoginFile(new List<string> { id, pw, "0" }, id, pw);
                 }
             }
             else if (condition == FileReadWrite.FileCondition.FileExist)
             {
-                List<string> read = fileReadWrite.ReadFile();
+                List<string> read = FileReadWrite.ReadLoginFile(id, pw);
 
                 if (HashGenerator.VerifyHash(read[0], id) && HashGenerator.VerifyHash(read[1], pw))
                 {

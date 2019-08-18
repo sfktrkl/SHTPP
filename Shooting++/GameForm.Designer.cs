@@ -32,6 +32,8 @@
             this.codeText = new System.Windows.Forms.RichTextBox();
             this.title = new System.Windows.Forms.Label();
             this.missionNote = new System.Windows.Forms.Label();
+            this.run = new Shooting__.ClickableLabel();
+            this.save = new Shooting__.ClickableLabel();
             this.SuspendLayout();
             // 
             // OSGPanel
@@ -75,11 +77,35 @@
             this.missionNote.TabIndex = 3;
             this.missionNote.Text = "Mission Note: ";
             // 
+            // run
+            // 
+            this.run.AutoSize = true;
+            this.run.Font = new System.Drawing.Font("Algerian", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.run.Location = new System.Drawing.Point(260, 775);
+            this.run.Name = "run";
+            this.run.Size = new System.Drawing.Size(84, 39);
+            this.run.TabIndex = 5;
+            this.run.Text = "Run";
+            this.run.Click += new System.EventHandler(this.run_Click);
+            // 
+            // save
+            // 
+            this.save.AutoSize = true;
+            this.save.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.save.Location = new System.Drawing.Point(483, 753);
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(77, 26);
+            this.save.TabIndex = 6;
+            this.save.Text = "Save";
+            this.save.Click += new System.EventHandler(this.save_Click);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1424, 861);
+            this.Controls.Add(this.save);
+            this.Controls.Add(this.run);
             this.Controls.Add(this.missionNote);
             this.Controls.Add(this.title);
             this.Controls.Add(this.codeText);
@@ -102,5 +128,7 @@
         private System.Windows.Forms.RichTextBox codeText;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Label missionNote;
+        private ClickableLabel run;
+        private ClickableLabel save;
     }
 }
