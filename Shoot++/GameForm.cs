@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using InterpreterClassLibrary;
 using OSGViewClassLibrary;
 
-namespace Shooting__
+namespace Shoot
 {
     public partial class GameForm : Form
     {

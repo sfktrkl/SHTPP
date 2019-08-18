@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using InterpreterClassLibrary;
 
 
-namespace Shooting__
+namespace Shoot
 {
     public partial class LoginForm : Form
     {

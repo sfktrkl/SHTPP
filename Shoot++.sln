@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shooting++", "Shooting++\Shooting++.csproj", "{812A3FC7-4728-429C-93CB-04BFE2B28388}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shoot++", "Shoot++\Shoot++.csproj", "{812A3FC7-4728-429C-93CB-04BFE2B28388}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4820B094-42F0-4D98-A457-323F772D69E9} = {4820B094-42F0-4D98-A457-323F772D69E9}
 		{A429B9E5-0C3C-4135-94BA-2E7E3E8EB996} = {A429B9E5-0C3C-4135-94BA-2E7E3E8EB996}

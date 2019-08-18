@@ -1,4 +1,4 @@
-﻿namespace Shooting__
+﻿namespace Shoot
 {
     partial class GameForm
     {
@@ -32,9 +32,9 @@
             this.codeText = new System.Windows.Forms.RichTextBox();
             this.title = new System.Windows.Forms.Label();
             this.missionNote = new System.Windows.Forms.Label();
-            this.back = new Shooting__.ClickableLabel();
-            this.save = new Shooting__.ClickableLabel();
-            this.run = new Shooting__.ClickableLabel();
+            this.back = new Shoot.ClickableLabel();
+            this.save = new Shoot.ClickableLabel();
+            this.run = new Shoot.ClickableLabel();
             this.renderAreaa = new System.Windows.Forms.PictureBox();
             this.OSGPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.renderAreaa)).BeginInit();

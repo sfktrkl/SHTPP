@@ -1,4 +1,4 @@
-﻿namespace Shooting__
+﻿namespace Shoot
 {
     public class Mission
     {

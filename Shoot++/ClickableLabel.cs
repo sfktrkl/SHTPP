@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Shooting__
+namespace Shoot
 {
     public class ClickableLabel : System.Windows.Forms.Label
     {

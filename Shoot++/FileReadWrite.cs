@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Shooting__
+namespace Shoot
 {
     public static class FileReadWrite
     {

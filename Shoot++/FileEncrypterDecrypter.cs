@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Shooting__
+namespace Shoot
 {
     public static class FileEncrypterDecrypter
     {

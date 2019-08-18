@@ -1,4 +1,4 @@
-﻿namespace Shooting__
+﻿namespace Shoot
 {
     partial class LoginForm
     {
@@ -34,7 +34,7 @@
             this.title = new System.Windows.Forms.Label();
             this.idBox = new System.Windows.Forms.TextBox();
             this.pwBox = new System.Windows.Forms.TextBox();
-            this.quit = new Shooting__.ClickableLabel();
+            this.quit = new Shoot.ClickableLabel();
             this.SuspendLayout();
             // 
             // Start

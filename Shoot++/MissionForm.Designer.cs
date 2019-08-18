@@ -1,4 +1,4 @@
-﻿namespace Shooting__
+﻿namespace Shoot
 {
     partial class MissionForm
     {
@@ -31,15 +31,15 @@
             this.title = new System.Windows.Forms.Label();
             this.tutorialsLabel = new System.Windows.Forms.Label();
             this.missionsLabel = new System.Windows.Forms.Label();
-            this.tutorial6 = new Shooting__.ClickableLabel();
-            this.tutorial5 = new Shooting__.ClickableLabel();
-            this.tutorial4 = new Shooting__.ClickableLabel();
-            this.tutorial3 = new Shooting__.ClickableLabel();
-            this.tutorial2 = new Shooting__.ClickableLabel();
-            this.tutorial1 = new Shooting__.ClickableLabel();
-            this.mission1 = new Shooting__.ClickableLabel();
-            this.mission2 = new Shooting__.ClickableLabel();
-            this.quit = new Shooting__.ClickableLabel();
+            this.tutorial6 = new Shoot.ClickableLabel();
+            this.tutorial5 = new Shoot.ClickableLabel();
+            this.tutorial4 = new Shoot.ClickableLabel();
+            this.tutorial3 = new Shoot.ClickableLabel();
+            this.tutorial2 = new Shoot.ClickableLabel();
+            this.tutorial1 = new Shoot.ClickableLabel();
+            this.mission1 = new Shoot.ClickableLabel();
+            this.mission2 = new Shoot.ClickableLabel();
+            this.quit = new Shoot.ClickableLabel();
             this.SuspendLayout();
             // 
             // title
