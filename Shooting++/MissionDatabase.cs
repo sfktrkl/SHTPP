@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Shooting__
 {
@@ -28,9 +24,9 @@ namespace Shooting__
 
         static MissionDatabase()
         {
-            database.Add("t1", new Data( "Tutorial 1", "This tutorials is made to ",
+            database.Add("t1", new Data("Tutorial 1", "This tutorials is made to ",
                 new List<string> { "input" },
-                new List<string> { "output" } ));
+                new List<string> { "output" }));
 
             database.Add("t2", new Data("Tutorial 2", "This tutorials is made to ",
                  new List<string> { "input" },

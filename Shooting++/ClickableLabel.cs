@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Shooting__
 {
-    public class ClickableLabel :  System.Windows.Forms.Label
+    public class ClickableLabel : System.Windows.Forms.Label
     {
         public ClickableLabel()
         {

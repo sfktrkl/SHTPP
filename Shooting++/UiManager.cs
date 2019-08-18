@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Shooting__
 {
@@ -25,9 +20,13 @@ namespace Shooting__
             mainForm = missions;
         }
 
-        public static void CreateGameForm()
+        public static void CreateGameForm(MissionDatabase.Data data)
         {
-
+            mainForm.Hide();
+            GameForm missions = new GameForm(data);
+            missions.ShowDialog();
+            mainForm.Close();
+            mainForm = missions;
         }
     }
 }
