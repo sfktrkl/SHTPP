@@ -4,13 +4,12 @@ using System.Windows.Forms;
 
 namespace Shooting__
 {
-    public partial class Login : Form
+    public partial class LoginForm : Form
     {
-        public Login()
+        public LoginForm()
         {
             InitializeComponent();
-
-            this.FormBorderStyle = FormBorderStyle.None;
+            UiManager.mainForm = this;
         }
 
         private void start_Click(object sender, EventArgs e)
@@ -61,7 +60,7 @@ namespace Shooting__
 
                 if (HashGenerator.VerifyHash(read[0], id) && HashGenerator.VerifyHash(read[1], pw))
                 {
-                    MessageBox.Show("Simdilik OKEY!!", "gogoogo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    UiManager.CreateMissionForm();
                 }
                 else
                 {
@@ -76,17 +75,7 @@ namespace Shooting__
 
         private void quit_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void quit_MouseHover(object sender, EventArgs e)
-        {
-            this.quit.ForeColor = System.Drawing.Color.Red;
-        }
-
-        private void quit_MouseLeave(object sender, EventArgs e)
-        {
-            this.quit.ForeColor = System.Drawing.Color.Black;
+            UiManager.CloseForm();
         }
     }
 }

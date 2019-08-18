@@ -1,6 +1,6 @@
 ﻿namespace Shooting__
 {
-    partial class Login
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.title = new System.Windows.Forms.Label();
             this.idBox = new System.Windows.Forms.TextBox();
             this.pwBox = new System.Windows.Forms.TextBox();
-            this.quit = new System.Windows.Forms.Label();
+            this.quit = new Shooting__.ClickableLabel();
             this.SuspendLayout();
             // 
             // Start
@@ -111,8 +111,6 @@
             this.quit.TabIndex = 6;
             this.quit.Text = "Q";
             this.quit.Click += new System.EventHandler(this.quit_Click);
-            this.quit.MouseLeave += new System.EventHandler(this.quit_MouseLeave);
-            this.quit.MouseHover += new System.EventHandler(this.quit_MouseHover);
             // 
             // Login
             // 
@@ -128,7 +126,7 @@
             this.Controls.Add(this.pwLabel);
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.Start);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";
@@ -150,7 +148,7 @@
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.TextBox idBox;
         private System.Windows.Forms.TextBox pwBox;
-        private System.Windows.Forms.Label quit;
+        private ClickableLabel quit;
     }
 }
 
