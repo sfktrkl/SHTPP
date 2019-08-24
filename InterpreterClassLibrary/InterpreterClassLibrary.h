@@ -12,6 +12,7 @@ namespace InterpreterClassLibrary {
     public:
         InterpreterClassWrapper(const char* file);
 
+        array<double>^ TakeOutputs();
     private:
         Interpreter* interpreter;
 	};

@@ -20,15 +20,27 @@ class OSGView
 public:
     void Render(HWND hwnd);
     void Destroy();
+    void Refresh();
 
     void SetMission(int mission);
 
+    void TakeOutputs(std::vector<double> results);
+    void SetSuccess(bool success);
+
 private:
-    bool CreateViewer(HWND hwnd);
+    HWND hwnd;
+    bool CreateViewer();
     osg::Geode* LoadMission();
     osg::Geode* LoadTutorial1();
 
     osg::ref_ptr<osg::Group> root;
 
     int missionNumber = 0;
+
+    std::vector<double> solutions;
+
+    osgText::Text3D* Success();
+    bool success = false;
+
+
 };

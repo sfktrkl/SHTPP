@@ -1,5 +1,6 @@
 #include "stdafx.h"
 
+#include <vector>
 #include "OSGViewClassLibrary.h"
 
 using namespace OSGViewClassLibrary;
@@ -24,8 +25,27 @@ void OSGViewClassWrapper::Destroy()
     osgView->Destroy();
 }
 
+void OSGViewClassWrapper::Refresh()
+{
+    // Call the native Destroy method
+    osgView->Refresh();
+}
+
 void OSGViewClassWrapper::SetMission(int mission)
 {
     // Call the native Destroy method
     osgView->SetMission(mission);
 }
+
+void OSGViewClassWrapper::GiveOutputs(double* outputs)
+{
+    std::vector<double> results(outputs, outputs + sizeof outputs / sizeof outputs[0]);
+
+    osgView->TakeOutputs(results);
+}
+
+void OSGViewClassWrapper::SetSuccess(bool success)
+{
+    osgView->SetSuccess(success);
+}
+

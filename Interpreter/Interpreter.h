@@ -19,7 +19,7 @@ public:
         Parser(tokens, variables);
     }
 
-    void Print(std::string text, bool error = false);
+    void TakeOutput(std::string text, bool error = false);
     const std::string OpenFile(const char* filename);
     const std::string EvaluateExpression(std::string expression);
     const void Lexer(const std::string& fileContents, toks& tokens);
@@ -27,4 +27,7 @@ public:
     const void Parser(toks& tokens, vars& variables);
     const bool checkKey(const vars& variables, const std::string key);
     const std::pair<VariableType, std::string> Scan();
+    std::vector<double> GiveOutputs() { return outputs; }
+
+    std::vector<double> outputs;
 };

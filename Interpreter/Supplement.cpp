@@ -1,15 +1,10 @@
 #include "Interpreter.h"
 
-void Interpreter::Print(std::string text, bool error)
+void Interpreter::TakeOutput(std::string text, bool error)
 {
-    if (error == true)
-        std::cout << "--------------------------------------------------------------------------" << std::endl;
+    if (error) return;
 
-    for (char& c : text) {
-        std::cout << c;
-    }
-
-    std::cout << std::endl;
+    outputs.push_back(std::stod(text));
 }
 
 const std::string Interpreter::OpenFile(const char* filename)

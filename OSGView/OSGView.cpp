@@ -16,7 +16,22 @@ static void RenderingThread(void*)
     finished = true;
 }
 
-bool OSGView::CreateViewer(HWND hwnd)
+osg::ref_ptr<osgText::Font3D> g_font3D = osgText::readFont3DFile("fonts/arial.ttf");
+
+osgText::Text3D* createText3D(const osg::Vec3& pos, const std::string& content, float size, float depth, osg::Vec4 color = osg::Vec4(0.5f, 0.5, 0.5, 1.0f))
+{
+    osg::ref_ptr<osgText::Text3D> text = new osgText::Text3D;
+    text->setFont(g_font3D.get());
+    text->setCharacterSize(size);
+    text->setCharacterDepth(depth);
+    text->setAxisAlignment(osgText::TextBase::XZ_PLANE);
+    text->setPosition(pos);
+    text->setText(content);
+    text->setColor(color);
+    return text.release();
+}
+
+bool OSGView::CreateViewer()
 {
     // Get the dimensions of the window handle
     RECT rect;
@@ -44,12 +59,12 @@ bool OSGView::CreateViewer(HWND hwnd)
     osg::ref_ptr<osg::Camera> camera = new osg::Camera;
     camera->setGraphicsContext(gc.get());
     camera->setViewport(new osg::Viewport(0, 0, traits->width, traits->height));
+    camera->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     camera->setDrawBuffer(GL_BACK);
     camera->setReadBuffer(GL_BACK);
 
     root = new osg::Group();
-    // turn off light
     root->getOrCreateStateSet()->setMode(GL_LIGHTING, osg::StateAttribute::ON);
     root->getOrCreateStateSet()->setMode(GL_DEPTH_TEST, osg::StateAttribute::ON);
     root->addChild(LoadMission());
@@ -70,7 +85,9 @@ bool OSGView::CreateViewer(HWND hwnd)
 
 void OSGView::Render(HWND hwnd)
 {
-    if (CreateViewer(hwnd))
+    this->hwnd = hwnd;
+
+    if (CreateViewer())
     {
         // Create a rendering thread
         _beginthread(RenderingThread, 0, NULL);
@@ -91,6 +108,22 @@ void OSGView::Destroy()
     root = NULL;
 }
 
+void OSGView::Refresh()
+{
+    // Set viewer's work to Done
+    viewer->setDone(true);
+
+    // Get the rendering status
+    while (!finished) Sleep(10);
+
+    // Release the memory
+    viewer = NULL;
+    finished = NULL;
+    root = NULL;
+
+    Render(hwnd);
+}
+
 void OSGView::SetMission(int mission)
 {
     this->missionNumber = mission;
@@ -106,25 +139,43 @@ osg::Geode* OSGView::LoadMission()
         return nullptr;
 }
 
-osg::ref_ptr<osgText::Font3D> g_font3D = osgText::readFont3DFile("fonts/arial.ttf");
-
-osgText::Text3D* createText3D(const osg::Vec3& pos, const std::string& content, float size, float depth)
+void OSGView::TakeOutputs(std::vector<double> results)
 {
-    osg::ref_ptr<osgText::Text3D> text = new osgText::Text3D;
-    text->setFont(g_font3D.get());
-    text->setCharacterSize(size);
-    text->setCharacterDepth(depth);
-    text->setAxisAlignment(osgText::TextBase::XZ_PLANE);
-    text->setPosition(pos);
-    text->setText(content);
-    return text.release();
+    this->solutions = results;
+}
+
+void OSGView::SetSuccess(bool success)
+{
+    this->success = success;
+}
+
+osgText::Text3D* OSGView::Success()
+{
+    osg::ref_ptr<osgText::Text3D> drawable;
+
+    if (success)
+        drawable = createText3D(osg::Vec3(0.0f, 0.0f, -50.0f), "Success", 10.0f, 10.0f, osg::Vec4(0.0f, 1.0f, 0.0f, 1.0f));
+    else
+        drawable = createText3D(osg::Vec3(0.0f, 0.0f, -50.0f), "Fail", 10.0f, 10.0f, osg::Vec4(1.0f, 0.0f, 0.0f, 1.0f));
+
+    return drawable.release();
 }
 
 osg::Geode* OSGView::LoadTutorial1()
 {
-    // creage geode and add cubedrawable
+    // Create geode
     osg::ref_ptr<osg::Geode> geode(new osg::Geode());
-    geode->addDrawable(createText3D(osg::Vec3(), " 3 + 2 = ?", 20.0f, 10.0f));
+
+    if (solutions.size() == 0)
+    {
+        geode->addDrawable(createText3D(osg::Vec3(), " 3 + 2 = ?", 20.0f, 10.0f));
+    }
+    else
+    {
+        geode->addDrawable(createText3D(osg::Vec3(), " 3 + 2 = " + std::to_string(solutions[0]), 20.0f, 10.0f));
+        geode->addDrawable(Success());
+    }
 
     return geode.release();
 }
+

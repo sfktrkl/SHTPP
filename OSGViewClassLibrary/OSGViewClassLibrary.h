@@ -12,9 +12,12 @@ namespace OSGViewClassLibrary {
 
         void Render(IntPtr hwnd);
         void Destroy();
+        void Refresh();
 
         void SetMission(int mission);
 
+        void GiveOutputs(double* outputs);
+        void SetSuccess(bool success);
     private:
         OSGView* osgView; // an instance of class in C++
 	};

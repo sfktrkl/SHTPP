@@ -104,7 +104,7 @@ const void Interpreter::Lexer(const std::string& fileContents, toks& tokens)
                 token = "";
             }
         }
-        else if (token == "YAZDIR")
+        else if (token == "SHOOT")
         {
             tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
             token = "";

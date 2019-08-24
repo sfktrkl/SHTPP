@@ -8,47 +8,47 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
     std::size_t i = 0;
     while (i < tokens.size())
     {
-        if (tokens[i].first == TokenType::KEYWORD && tokens[i].second == "YAZDIR")
+        if (tokens[i].first == TokenType::KEYWORD && tokens[i].second == "SHOOT")
         {
             if (tokens.size() > i + 1)
             {
                 if (tokens[i + 1].first == TokenType::STRING)
-                    Print(tokens[i + 1].second);
+                    TakeOutput(tokens[i + 1].second);
                 else if (tokens[i + 1].first == TokenType::NUMBER)
-                    Print(tokens[i + 1].second);
+                    TakeOutput(tokens[i + 1].second);
                 else if (tokens[i + 1].first == TokenType::EXPRESSION)
                 {
                     try
                     {
                         std::string result = EvaluateExpression(tokens[i + 1].second);
-                        Print(result);
+                        TakeOutput(result);
                     }
                     catch (const char* result)
                     {
-                        Print(result, true);
+                        TakeOutput(result, true);
                         return;
                     }
                 }
                 else if (tokens[i + 1].first == TokenType::VARIABLE)
                 {
                     if (checkKey(variables, tokens[i + 1].second))
-                        Print(variables[tokens[i + 1].second].getValue());
+                        TakeOutput(variables[tokens[i + 1].second].getValue());
                     else
                     {
-                        Print("SOZ DIZIMI HATASI : DEGISKEN BULUNAMADI", true);
+                        TakeOutput("SOZ DIZIMI HATASI : DEGISKEN BULUNAMADI", true);
                         return;
                     }
                 }
                 else
                 {
-                    Print("SOZ DIZIMI HATASI: YAZDIR FONKSIYONU HATALI PARAMETRE GIRISI!", true);
+                    TakeOutput("SOZ DIZIMI HATASI: SHOOT FONKSIYONU HATALI PARAMETRE GIRISI!", true);
                     return;
                 }
                 i += 1;
             }
             else
             {
-                Print("SOZ DIZIMI HATASI: YAZDIR FONKSIYONU PARAMETREYI BULAMADI!", true);
+                TakeOutput("SOZ DIZIMI HATASI: SHOOT FONKSIYONU PARAMETREYI BULAMADI!", true);
                 return;
             }
         }
@@ -76,7 +76,7 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                             }
                             catch (const char* result)
                             {
-                                Print(result, true);
+                                TakeOutput(result, true);
                                 return;
                             }
                         }
@@ -86,7 +86,7 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                                 variables[tokens[i].second].setData(variables[tokens[i + 2].second].getType(), variables[tokens[i + 2].second].getValue());
                             else
                             {
-                                Print("SOZ DIZIMI HATASI : DEGISKEN BULUNAMADI", true);
+                                TakeOutput("SOZ DIZIMI HATASI : DEGISKEN BULUNAMADI", true);
                                 return;
                             }
                         }
@@ -94,7 +94,7 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                     }
                     else
                     {
-                        Print("SOZ DIZIMI HATASI: DEGISKEN PARAMETRESI BULUNAMADI!", true);
+                        TakeOutput("SOZ DIZIMI HATASI: DEGISKEN PARAMETRESI BULUNAMADI!", true);
                         return;
                     }
                     i += 1;
@@ -107,7 +107,7 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
             {
                 if (tokens[i + 1].first == TokenType::STRING)
                 {
-                    Print(tokens[i + 1].second);
+                    TakeOutput(tokens[i + 1].second);
 
                     if (tokens.size() > i + 2)
                     {
@@ -125,28 +125,28 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                         }
                         else
                         {
-                            Print("SOZ DIZIMI HATASI: GIRDI FONKSIYONU DEGISKEN BULUNAMADI!", true);
+                            TakeOutput("SOZ DIZIMI HATASI: GIRDI FONKSIYONU DEGISKEN BULUNAMADI!", true);
                             return;
                         }
                         i += 1;
                     }
                     else
                     {
-                        Print("SOZ DIZIMI HATASI: DEGISKEN PARAMETRESI BULUNAMADI!", true);
+                        TakeOutput("SOZ DIZIMI HATASI: DEGISKEN PARAMETRESI BULUNAMADI!", true);
                         return;
                     }
                     i += 1;
                 }
                 else
                 {
-                    Print("SOZ DIZIMI HATASI: GIRDI FONKSIYONU HATALI PARAMETRE(MESAJ)!", true);
+                    TakeOutput("SOZ DIZIMI HATASI: GIRDI FONKSIYONU HATALI PARAMETRE(MESAJ)!", true);
                     return;
                 }
 
             }
             else
             {
-                Print("SOZ DIZIMI HATASI: MESAJ BULUNAMADI!", true);
+                TakeOutput("SOZ DIZIMI HATASI: MESAJ BULUNAMADI!", true);
                 return;
             }
         }
@@ -163,7 +163,7 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
             }
             else
             {
-                Print("SOZ DIZIMI HATASI: KOSUL BULUNAMADI!", true);
+                TakeOutput("SOZ DIZIMI HATASI: KOSUL BULUNAMADI!", true);
                 return;
             }
         }
