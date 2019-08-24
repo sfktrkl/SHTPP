@@ -22,5 +22,8 @@ public:
     void CreateSphere();
 
 private:
+    osg::ref_ptr<osgViewer::Viewer> viewer;
     osg::ref_ptr<osg::Group> root;
+
+    bool finished;
 };

@@ -136,7 +136,6 @@
   <ItemGroup>
     <ClCompile Include="Conditioner.cpp" />
     <ClCompile Include="Lexer.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Supplement.cpp" />
   </ItemGroup>

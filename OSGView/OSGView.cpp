@@ -1,21 +1,6 @@
 #pragma once
 #include "OSGView.h"
 
-osg::ref_ptr<osgViewer::Viewer> viewer;
-bool finished;
-
-static void RenderingThread(void*)
-{
-    // Keep the rendering as long as the viewer's work isn't done
-    while (!viewer->done())
-    {
-        viewer->frame();
-    }
-
-    // The rendering is done, set the status to Finished
-    finished = true;
-}
-
 bool OSGView::CreateViewer(HWND hwnd)
 {
     // Get the dimensions of the window handle
@@ -121,17 +106,14 @@ void OSGView::Render(HWND hwnd)
 {
     if (CreateViewer(hwnd))
     {
-        // Create a rendering thread
-        _beginthread(RenderingThread, 0, NULL);
+        // Keep the rendering as long as the viewer's work isn't done
+        while (!viewer->done())
+        {
+            viewer->frame();
+        }
 
-        //viewer->realize();
-        //	// Keep the rendering as long as the viewer's work isn't done
-        //while (!viewer->done())
-        //{
-        //	viewer ->frame();
-        //}
-        //// The rendering is done, set the status to Finished
-        //finished = true;
+        // The rendering is done, set the status to Finished
+        finished = true;
     }
 }
 
