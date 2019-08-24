@@ -11,14 +11,16 @@ namespace Shoot
             public List<string> variableList;
             public List<string> aimList;
             public string code;
+            public int number;
 
-            public Data(string name, string note, List<string> variableList, List<string> aimList, string code)
+            public Data(string name, string note, List<string> variableList, List<string> aimList, string code, int number)
             {
                 this.name = name;
                 this.note = note;
                 this.variableList = variableList;
                 this.aimList = aimList;
                 this.code = code;
+                this.number = number;
             }
         }
 
@@ -30,7 +32,8 @@ namespace Shoot
                 new List<string> { "input" },
                 new List<string> { "output" },
                 "#Example:\n" + 
-                "SHOOT 10"
+                "SHOOT 10",
+                1
                 ));
         }
 

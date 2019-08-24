@@ -1,6 +1,21 @@
 #pragma once
 #include "OSGView.h"
 
+osg::ref_ptr<osgViewer::Viewer> viewer;
+bool finished;
+
+static void RenderingThread(void*)
+{
+    // Keep the rendering as long as the viewer's work isn't done
+    while (!viewer->done())
+    {
+        viewer->frame();
+    }
+
+    // The rendering is done, set the status to Finished
+    finished = true;
+}
+
 bool OSGView::CreateViewer(HWND hwnd)
 {
     // Get the dimensions of the window handle
@@ -34,32 +49,18 @@ bool OSGView::CreateViewer(HWND hwnd)
     camera->setReadBuffer(GL_BACK);
 
     root = new osg::Group();
-
-    // cube centered at origin
-    osg::ref_ptr<osg::Box> cube(new osg::Box(osg::Vec3(0, 0, 0), 1.0f));
-
-    // associate shape with drawable
-    osg::ref_ptr<osg::ShapeDrawable> cubeDrawable(new osg::ShapeDrawable(cube));
-
-    // creage geode and add cubedrawable
-    osg::ref_ptr<osg::Geode> cubeGeode(new osg::Geode());
-
-    cubeGeode->addDrawable(cubeDrawable);
-
-    // add cube geode to root
-    root->addChild(cubeGeode);
+    // turn off light
+    root->getOrCreateStateSet()->setMode(GL_LIGHTING, osg::StateAttribute::ON);
+    root->getOrCreateStateSet()->setMode(GL_DEPTH_TEST, osg::StateAttribute::ON);
+    root->addChild(LoadMission());
 
     // Create the viewer and attach the camera to it
     viewer = new osgViewer::Viewer;
     viewer->addSlave(camera.get());
-
     viewer->setCamera(camera.get());
     viewer->setSceneData(root);
     viewer->setKeyEventSetsDone(0);
     viewer->setCameraManipulator(new osgGA::TrackballManipulator);
-
-    // turn off light
-    root->getOrCreateStateSet()->setMode(GL_LIGHTING, osg::StateAttribute::ON);
 
     // The viewer isn't rendering yet, set the status to False
     finished = false;
@@ -67,53 +68,12 @@ bool OSGView::CreateViewer(HWND hwnd)
     return true;
 }
 
-void OSGView::CreateCube()
-{
-    // cube centered at origin
-    osg::ref_ptr<osg::Box> cube(new osg::Box(osg::Vec3(0, 0, 0), 1.0f));
-
-    // associate shape with drawable
-    osg::ref_ptr<osg::ShapeDrawable> cubeDrawable(new osg::ShapeDrawable(cube));
-
-    // creage geode and add cubedrawable
-    osg::ref_ptr<osg::Geode> cubeGeode(new osg::Geode());
-
-    cubeGeode->addDrawable(cubeDrawable);
-
-    // add cube geode to root
-    root->addChild(cubeGeode);
-
-    viewer->setSceneData(root);
-}
-
-void OSGView::CreateSphere()
-{
-    //smart pointer ??
-    osg::ref_ptr<osg::Sphere> sphere(new osg::Sphere(osg::Vec3(0, 0, 0), 1.0f));
-
-    osg::ref_ptr<osg::ShapeDrawable> sphereDrawable(new osg::ShapeDrawable(sphere));
-
-    osg::ref_ptr<osg::Geode> sphereGeode(new osg::Geode());
-
-    sphereGeode->addDrawable(sphereDrawable);
-
-    root->addChild(sphereGeode);
-
-    viewer->setSceneData(root);
-}
-
 void OSGView::Render(HWND hwnd)
 {
     if (CreateViewer(hwnd))
     {
-        // Keep the rendering as long as the viewer's work isn't done
-        while (!viewer->done())
-        {
-            viewer->frame();
-        }
-
-        // The rendering is done, set the status to Finished
-        finished = true;
+        // Create a rendering thread
+        _beginthread(RenderingThread, 0, NULL);
     }
 }
 
@@ -129,4 +89,42 @@ void OSGView::Destroy()
     viewer = NULL;
     finished = NULL;
     root = NULL;
+}
+
+void OSGView::SetMission(int mission)
+{
+    this->missionNumber = mission;
+}
+
+osg::Geode* OSGView::LoadMission()
+{
+    if (missionNumber == 0)
+        return nullptr;
+    else if (missionNumber == 1)
+        return LoadTutorial1();
+    else
+        return nullptr;
+}
+
+osg::ref_ptr<osgText::Font3D> g_font3D = osgText::readFont3DFile("fonts/arial.ttf");
+
+osgText::Text3D* createText3D(const osg::Vec3& pos, const std::string& content, float size, float depth)
+{
+    osg::ref_ptr<osgText::Text3D> text = new osgText::Text3D;
+    text->setFont(g_font3D.get());
+    text->setCharacterSize(size);
+    text->setCharacterDepth(depth);
+    text->setAxisAlignment(osgText::TextBase::XZ_PLANE);
+    text->setPosition(pos);
+    text->setText(content);
+    return text.release();
+}
+
+osg::Geode* OSGView::LoadTutorial1()
+{
+    // creage geode and add cubedrawable
+    osg::ref_ptr<osg::Geode> geode(new osg::Geode());
+    geode->addDrawable(createText3D(osg::Vec3(), " 3 + 2 = ?", 20.0f, 10.0f));
+
+    return geode.release();
 }

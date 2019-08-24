@@ -35,15 +35,15 @@
             this.back = new Shoot.ClickableLabel();
             this.save = new Shoot.ClickableLabel();
             this.run = new Shoot.ClickableLabel();
-            this.renderAreaa = new System.Windows.Forms.PictureBox();
+            this.renderArea = new System.Windows.Forms.PictureBox();
             this.OSGPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.renderAreaa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.renderArea)).BeginInit();
             this.SuspendLayout();
             // 
             // OSGPanel
             // 
             this.OSGPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.OSGPanel.Controls.Add(this.renderAreaa);
+            this.OSGPanel.Controls.Add(this.renderArea);
             this.OSGPanel.Location = new System.Drawing.Point(600, 150);
             this.OSGPanel.Name = "OSGPanel";
             this.OSGPanel.Size = new System.Drawing.Size(800, 600);
@@ -115,14 +115,14 @@
             this.run.Text = "Run";
             this.run.Click += new System.EventHandler(this.run_Click);
             // 
-            // renderAreaa
+            // renderArea
             // 
-            this.renderAreaa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderAreaa.Location = new System.Drawing.Point(0, 0);
-            this.renderAreaa.Name = "renderAreaa";
-            this.renderAreaa.Size = new System.Drawing.Size(800, 600);
-            this.renderAreaa.TabIndex = 0;
-            this.renderAreaa.TabStop = false;
+            this.renderArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderArea.Location = new System.Drawing.Point(0, 0);
+            this.renderArea.Name = "renderArea";
+            this.renderArea.Size = new System.Drawing.Size(800, 600);
+            this.renderArea.TabIndex = 0;
+            this.renderArea.TabStop = false;
             // 
             // GameForm
             // 
@@ -145,7 +145,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameForm";
             this.OSGPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.renderAreaa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.renderArea)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,6 +160,6 @@
         private ClickableLabel run;
         private ClickableLabel save;
         private ClickableLabel back;
-        private System.Windows.Forms.PictureBox renderAreaa;
+        private System.Windows.Forms.PictureBox renderArea;
     }
 }

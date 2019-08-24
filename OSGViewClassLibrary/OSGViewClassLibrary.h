@@ -10,10 +10,10 @@ namespace OSGViewClassLibrary {
     public:
         OSGViewClassWrapper();
 
-        void CreateCube();
-        void CreateSphere();
         void Render(IntPtr hwnd);
         void Destroy();
+
+        void SetMission(int mission);
 
     private:
         OSGView* osgView; // an instance of class in C++

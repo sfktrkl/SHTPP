@@ -6,6 +6,10 @@
 #include <osg/Group>
 #include <osg/ShapeDrawable>
 #include <osg/Camera>
+#include <osg/MatrixTransform>
+#include <osgDB/ReadFile>
+#include <osgText/Font3D>
+#include <osgText/Text3D>
 #include <osg/LightSource>
 #include <osgGA/TrackballManipulator>
 #include <osgViewer/Viewer>
@@ -14,16 +18,17 @@
 class OSGView
 {
 public:
-    bool CreateViewer(HWND hwnd);
     void Render(HWND hwnd);
     void Destroy();
 
-    void CreateCube();
-    void CreateSphere();
+    void SetMission(int mission);
 
 private:
-    osg::ref_ptr<osgViewer::Viewer> viewer;
+    bool CreateViewer(HWND hwnd);
+    osg::Geode* LoadMission();
+    osg::Geode* LoadTutorial1();
+
     osg::ref_ptr<osg::Group> root;
 
-    bool finished;
+    int missionNumber = 0;
 };

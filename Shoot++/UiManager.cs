@@ -46,11 +46,11 @@ namespace Shoot
             currentForm.FormClosing += new FormClosingEventHandler(CloseMissionForm);
         }
 
-        public static void CreateGameForm(MissionDatabase.Data data)
+        public static void CreateGameForm(MissionDatabase.Data mission)
         {
             currentForm.FormClosing -= new FormClosingEventHandler(CloseMissionForm);
             currentForm.Close();
-            currentForm = new GameForm(data);
+            currentForm = new GameForm(mission);
             currentForm.Show();
             currentForm.FormClosing += new FormClosingEventHandler(ClosingGameForm);
         }

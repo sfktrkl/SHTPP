@@ -9,14 +9,6 @@ OSGViewClassWrapper::OSGViewClassWrapper()
     osgView = new OSGView();
 }
 
-void OSGViewClassWrapper::CreateCube() {
-    osgView->CreateCube();
-}
-
-void OSGViewClassWrapper::CreateSphere() {
-    osgView->CreateSphere();
-}
-
 void OSGViewClassWrapper::Render(IntPtr hwnd)
 {
     // Get the pointer as window handler
@@ -30,4 +22,10 @@ void OSGViewClassWrapper::Destroy()
 {
     // Call the native Destroy method
     osgView->Destroy();
+}
+
+void OSGViewClassWrapper::SetMission(int mission)
+{
+    // Call the native Destroy method
+    osgView->SetMission(mission);
 }
