@@ -27,7 +27,7 @@ public:
     const void Parser(toks& tokens, vars& variables);
     const bool checkKey(const vars& variables, const std::string key);
     const std::pair<VariableType, std::string> Scan();
-    std::vector<double> GiveOutputs() { return outputs; }
+    std::vector<int> GiveOutputs() { return outputs; }
 
-    std::vector<double> outputs;
+    std::vector<int> outputs;
 };

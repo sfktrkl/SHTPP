@@ -24,7 +24,7 @@ public:
 
     void SetMission(int mission);
 
-    void TakeOutputs(std::vector<double> results);
+    void TakeOutputs(std::vector<int> results);
     void SetSuccess(bool success);
 
 private:
@@ -37,7 +37,7 @@ private:
 
     int missionNumber = 0;
 
-    std::vector<double> solutions;
+    std::vector<int> solutions;
 
     osgText::Text3D* Success();
     bool success = false;

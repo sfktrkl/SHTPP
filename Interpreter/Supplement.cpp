@@ -4,7 +4,7 @@ void Interpreter::TakeOutput(std::string text, bool error)
 {
     if (error) return;
 
-    outputs.push_back(std::stod(text));
+    outputs.push_back(std::stoi(text));
 }
 
 const std::string Interpreter::OpenFile(const char* filename)

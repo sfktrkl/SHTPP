@@ -16,7 +16,7 @@ namespace OSGViewClassLibrary {
 
         void SetMission(int mission);
 
-        void GiveOutputs(double* outputs);
+        void GiveOutputs(int* outputs);
         void SetSuccess(bool success);
     private:
         OSGView* osgView; // an instance of class in C++

@@ -13,9 +13,9 @@ namespace Shoot
             public List<string> aimList;
             public string code;
             public int number;
-            public double[] solutions;
+            public int[] solutions;
 
-            public Data(string name, string note, List<string> variableList, List<string> aimList, string code, int number, double[] solutions)
+            public Data(string name, string note, List<string> variableList, List<string> aimList, string code, int number, int[] solutions)
             {
                 this.name = name;
                 this.note = note;
@@ -31,9 +31,9 @@ namespace Shoot
 
         static MissionDatabase()
         {
-            Func<double[]> tutorial1 = delegate 
+            Func<int[]> tutorial1 = delegate 
             {
-                double[] solutions = new double[1];
+                int[] solutions = new int[1];
                 solutions[0] = 5;
                 return solutions;
             };
@@ -46,7 +46,8 @@ namespace Shoot
                 "#SHOOT 5\n" +
                 "#SHOOT 3 + 2\n" +
                 "#It is possible using value or expression\n" +
-                "#SHOOT keyword takes the final results\n" +
+                "#SHOOT keyword takes the final results\n\n" +
+                "#Important: Only integer calculations are possible\n\n" + 
                 "SHOOT 3 + 2",
                 1,
                 tutorial1()

@@ -139,7 +139,7 @@ osg::Geode* OSGView::LoadMission()
         return nullptr;
 }
 
-void OSGView::TakeOutputs(std::vector<double> results)
+void OSGView::TakeOutputs(std::vector<int> results)
 {
     this->solutions = results;
 }

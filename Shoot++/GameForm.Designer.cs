@@ -52,7 +52,7 @@
             // codeText
             // 
             this.codeText.DetectUrls = false;
-            this.codeText.Font = new System.Drawing.Font("Algerian", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeText.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codeText.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.codeText.Location = new System.Drawing.Point(40, 150);
             this.codeText.Name = "codeText";

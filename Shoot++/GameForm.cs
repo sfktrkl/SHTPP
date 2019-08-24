@@ -9,7 +9,7 @@ namespace Shoot
     {
         private OSGViewClassWrapper viewer = new OSGViewClassWrapper();
         private InterpreterClassWrapper interpreter;
-        private double[] solutions;
+        private int[] solutions;
 
         public GameForm(MissionDatabase.Data mission)
         {
@@ -51,11 +51,11 @@ namespace Shoot
             }
         }
 
-        private void GiveOutputsToViewer(double[] values)
+        private void GiveOutputsToViewer(int[] values)
         {
             unsafe
             {
-                fixed (double* p = values)
+                fixed (int* p = values)
                 {
                     viewer.GiveOutputs(p);
                 }
@@ -68,7 +68,7 @@ namespace Shoot
             string file = FileReadWrite.WriteFile(content, this.Text.ToString());
             CallInterpreter(file);
 
-            double[] outputs = interpreter.TakeOutputs();
+            int[] outputs = interpreter.TakeOutputs();
 
             GiveOutputsToViewer(outputs);
 

@@ -37,9 +37,9 @@ void OSGViewClassWrapper::SetMission(int mission)
     osgView->SetMission(mission);
 }
 
-void OSGViewClassWrapper::GiveOutputs(double* outputs)
+void OSGViewClassWrapper::GiveOutputs(int* outputs)
 {
-    std::vector<double> results(outputs, outputs + sizeof outputs / sizeof outputs[0]);
+    std::vector<int> results(outputs, outputs + sizeof outputs / sizeof outputs[0]);
 
     osgView->TakeOutputs(results);
 }

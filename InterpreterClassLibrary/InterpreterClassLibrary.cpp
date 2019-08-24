@@ -9,11 +9,11 @@ InterpreterClassWrapper::InterpreterClassWrapper(const char* file)
     interpreter = new Interpreter(file);
 }
 
-array<double>^ InterpreterClassWrapper::TakeOutputs()
+array<int>^ InterpreterClassWrapper::TakeOutputs()
 {
-    std::vector<double> outputs =  interpreter->GiveOutputs();
+    std::vector<int> outputs =  interpreter->GiveOutputs();
 
-    auto result = gcnew array<double>((int)outputs.size());
+    auto result = gcnew array<int>((int)outputs.size());
 
     for (int i = 0; i < outputs.size(); ++i)
         result[i] = outputs[i];
