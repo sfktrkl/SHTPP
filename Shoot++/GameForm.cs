@@ -10,10 +10,14 @@ namespace Shoot
         private OSGViewClassWrapper viewer = new OSGViewClassWrapper();
         private InterpreterClassWrapper interpreter;
         private int[] solutions;
+        private MissionDatabase.Data mission;
 
         public GameForm(MissionDatabase.Data mission)
         {
             InitializeComponent();
+
+            this.mission = mission;
+
             this.title.Text = mission.name;
             this.Text = mission.name;
             this.missionNote.Text = mission.note;
@@ -27,6 +31,7 @@ namespace Shoot
             solutions = mission.solutions;
 
             viewer.SetMission(mission.number);
+            GiveInputsToViewer(mission.inputs);
 
             renderArea.Paint += new PaintEventHandler(Painter);
         }
@@ -37,27 +42,45 @@ namespace Shoot
             viewer.Render(renderArea.Handle);
         }
 
-        private void CallInterpreter(string file)
+        private void CallInterpreter(string file, int[] inputValues)
         {
             byte[] bytes = System.Text.Encoding.ASCII.GetBytes(file);
 
             unsafe
             {
-                fixed (byte* p = bytes)
+                fixed (byte* fileByte = bytes)
                 {
-                    sbyte* sp = (sbyte*)p;
-                    interpreter = new InterpreterClassWrapper(sp);
+                    sbyte* fileString = (sbyte*)fileByte;
+                    interpreter = new InterpreterClassWrapper(fileString);
+                }
+
+                fixed (int* inputs = inputValues)
+                {
+                    interpreter.GiveInputs(inputs);
+                }
+            }
+
+            interpreter.Execute();
+        }
+
+        private void GiveOutputsToViewer(int[] outputValues)
+        {
+            unsafe
+            {
+                fixed (int* outputs = outputValues)
+                {
+                    viewer.GiveOutputs(outputs);
                 }
             }
         }
 
-        private void GiveOutputsToViewer(int[] values)
+        private void GiveInputsToViewer(int[] inputValues)
         {
             unsafe
             {
-                fixed (int* p = values)
+                fixed (int* inputs = inputValues)
                 {
-                    viewer.GiveOutputs(p);
+                    viewer.GiveInputs(inputs);
                 }
             }
         }
@@ -66,7 +89,7 @@ namespace Shoot
         {
             string content = this.codeText.Text.ToUpper();
             string file = FileReadWrite.WriteFile(content, this.Text.ToString());
-            CallInterpreter(file);
+            CallInterpreter(file, mission.inputs);
 
             int[] outputs = interpreter.TakeOutputs();
 

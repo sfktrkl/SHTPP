@@ -10,8 +10,11 @@ class Interpreter
 public:
     Interpreter(const char* file)
     {
-        std::string fileContents = OpenFile(file);
+        this->fileContents = OpenFile(file);
+    }
 
+    void Execute()
+    {
         toks tokens;
         vars variables;
 
@@ -19,15 +22,21 @@ public:
         Parser(tokens, variables);
     }
 
-    void TakeOutput(std::string text, bool error = false);
+    void AddOutput(std::string text, bool error = false);
     const std::string OpenFile(const char* filename);
-    const std::string EvaluateExpression(std::string expression);
+    const std::string EvaluateExpression(std::string expression, vars& variables);
     const void Lexer(const std::string& fileContents, toks& tokens);
-    const void Conditioner(toks& tokens, std::vector<toks>& ifTokens);
+    const void Conditioner(toks& tokens, std::vector<toks>& ifTokens, vars& variables);
     const void Parser(toks& tokens, vars& variables);
     const bool checkKey(const vars& variables, const std::string key);
-    const std::pair<VariableType, std::string> Scan();
+    const std::pair<VariableType, std::string> Scan(vars& variables);
+
     std::vector<int> GiveOutputs() { return outputs; }
+    void TakeInputs(std::vector<int> inputs) { this->inputs = inputs; inputNumber = 0; }
+
+    std::string fileContents;
 
     std::vector<int> outputs;
+    std::vector<int> inputs;
+    int inputNumber{ };
 };

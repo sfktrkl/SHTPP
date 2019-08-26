@@ -39,9 +39,16 @@ void OSGViewClassWrapper::SetMission(int mission)
 
 void OSGViewClassWrapper::GiveOutputs(int* outputs)
 {
-    std::vector<int> results(outputs, outputs + sizeof outputs / sizeof outputs[0]);
+    std::vector<int> outputsVector(outputs, outputs + sizeof outputs / sizeof outputs[0]);
 
-    osgView->TakeOutputs(results);
+    osgView->TakeOutputs(outputsVector);
+}
+
+void OSGViewClassWrapper::GiveInputs(int* inputs)
+{
+    std::vector<int> inputsVector(inputs, inputs + sizeof inputs / sizeof inputs[0]);
+
+    osgView->TakeInputs(inputsVector);
 }
 
 void OSGViewClassWrapper::SetSuccess(bool success)

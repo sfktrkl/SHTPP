@@ -114,7 +114,7 @@
             this.tutorial3.Name = "tutorial3";
             this.tutorial3.Size = new System.Drawing.Size(89, 24);
             this.tutorial3.TabIndex = 6;
-            this.tutorial3.Text = "- Debug";
+            this.tutorial3.Text = "- TAKING INPUTS";
             this.tutorial3.Click += new System.EventHandler(this.tutorial3_Click);
             // 
             // tutorial2

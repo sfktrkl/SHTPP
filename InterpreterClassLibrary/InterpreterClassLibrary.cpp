@@ -9,6 +9,11 @@ InterpreterClassWrapper::InterpreterClassWrapper(const char* file)
     interpreter = new Interpreter(file);
 }
 
+void InterpreterClassWrapper::Execute()
+{
+    interpreter->Execute();
+}
+
 array<int>^ InterpreterClassWrapper::TakeOutputs()
 {
     std::vector<int> outputs =  interpreter->GiveOutputs();
@@ -19,4 +24,11 @@ array<int>^ InterpreterClassWrapper::TakeOutputs()
         result[i] = outputs[i];
 
     return result;
+}
+
+void InterpreterClassWrapper::GiveInputs(int* inputs)
+{
+    std::vector<int> inputsVector(inputs, inputs + sizeof inputs / sizeof inputs[0]);
+
+    interpreter->TakeInputs(inputsVector);
 }

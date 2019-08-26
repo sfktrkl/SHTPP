@@ -1,6 +1,6 @@
 #include "Interpreter.h"
 
-void Interpreter::TakeOutput(std::string text, bool error)
+void Interpreter::AddOutput(std::string text, bool error)
 {
     if (error) return;
 
@@ -16,13 +16,15 @@ const std::string Interpreter::OpenFile(const char* filename)
     return str;
 }
 
-const std::string Interpreter::EvaluateExpression(std::string expression)
+const std::string Interpreter::EvaluateExpression(std::string expression, vars& variables)
 {
     expression += "q";
     int result{};
     int numberPosition{};
     std::vector<int> numberStack;
     std::vector<std::pair<char, std::vector<int>>> operatorStack;
+    bool variableStarted = false;
+    std::string variableName;
     std::string number;
 
     for (char& ch : expression) {
@@ -38,6 +40,16 @@ const std::string Interpreter::EvaluateExpression(std::string expression)
         {
             numberStack.push_back(std::stoi(number));
             number = "";
+        }
+        else if (ch == '$')
+        {
+            if (variableStarted == false)
+                variableStarted = true;
+            else
+            {
+                number = variables[number].getValue();
+                variableStarted = false;
+            }
         }
         else
         {
@@ -108,11 +120,12 @@ const bool Interpreter::checkKey(const vars& variables, const std::string key)
     return true;
 }
 
-const std::pair<VariableType, std::string> Interpreter::Scan()
+const std::pair<VariableType, std::string> Interpreter::Scan(vars& variables)
 {
     std::pair<VariableType, std::string> data;
     std::string input;
-    std::getline(std::cin, input);
+    input = std::to_string(inputs[inputNumber]);
+    inputNumber++;
     toks tokens;
     Lexer(input + "\n", tokens);
 
@@ -131,7 +144,7 @@ const std::pair<VariableType, std::string> Interpreter::Scan()
         else if (tokens[0].first == TokenType::EXPRESSION)
         {
             data.first = VariableType::NUMBER;
-            data.second = EvaluateExpression(tokens[0].second);
+            data.second = EvaluateExpression(tokens[0].second, variables);
         }
     }
     else

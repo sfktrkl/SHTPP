@@ -25,6 +25,7 @@ public:
     void SetMission(int mission);
 
     void TakeOutputs(std::vector<int> results);
+    void TakeInputs(std::vector<int> inputs);
     void SetSuccess(bool success);
 
 private:
@@ -32,15 +33,16 @@ private:
     bool CreateViewer();
     osg::Geode* LoadMission();
     osg::Geode* LoadTutorial1();
+    osg::Geode* LoadTutorial3();
 
     osg::ref_ptr<osg::Group> root;
 
     int missionNumber = 0;
 
     std::vector<int> solutions;
+    std::vector<int> inputs;
 
     osgText::Text3D* Success();
     bool success = false;
-
 
 };

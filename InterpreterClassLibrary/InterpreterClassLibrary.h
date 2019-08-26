@@ -11,8 +11,10 @@ namespace InterpreterClassLibrary {
 	{
     public:
         InterpreterClassWrapper(const char* file);
+        void Execute();
 
         array<int>^ TakeOutputs();
+        void GiveInputs(int* inputs);
     private:
         Interpreter* interpreter;
 	};

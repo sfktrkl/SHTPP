@@ -36,7 +36,16 @@ const void Interpreter::Lexer(const std::string& fileContents, toks& tokens)
         }
         else if (token == "\n" || token == "<EOF>")
         {
-            if (expression != "" && isExpression == true)
+            if (expression != "" && isExpression == true && variable != "")
+            {
+                expression = expression + "$" + variable + "$";
+                tokens.push_back(std::make_pair(TokenType::EXPRESSION, expression));
+                expression = "";
+                variable = "";
+                isExpression = false;
+                variableStarted = false;
+            }
+            else if (expression != "" && isExpression == true)
             {
                 tokens.push_back(std::make_pair(TokenType::EXPRESSION, expression));
                 expression = "";
@@ -47,7 +56,7 @@ const void Interpreter::Lexer(const std::string& fileContents, toks& tokens)
                 tokens.push_back(std::make_pair(TokenType::NUMBER, expression));
                 expression = "";
             }
-            else if (variable != "" && variableStarted == true)
+            else if (variable != "")
             {
                 tokens.push_back(std::make_pair(TokenType::VARIABLE, variable));
                 variable = "";
@@ -94,6 +103,20 @@ const void Interpreter::Lexer(const std::string& fileContents, toks& tokens)
             variableStarted = true;
             token = "";
         }
+        else if (std::regex_match(token, operators))
+        {
+            isExpression = true;
+            if (variable != "")
+            {
+                expression = expression + "$" + variable + "$" + token;
+                variable = "";
+                variableStarted = false;
+            }
+            else
+                expression += token;
+
+            token = "";
+        }
         else if (variableStarted == true)
         {
             if (token == "<")
@@ -132,19 +155,13 @@ const void Interpreter::Lexer(const std::string& fileContents, toks& tokens)
             expression = "";
             token = "";
         }
-        else if (token == "GIRDI")
+        else if (token == "INPUT")
         {
             tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
             token = "";
         }
         else if (std::regex_match(token, numbers))
         {
-            expression += token;
-            token = "";
-        }
-        else if (std::regex_match(token, operators))
-        {
-            isExpression = true;
             expression += token;
             token = "";
         }

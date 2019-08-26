@@ -135,6 +135,10 @@ osg::Geode* OSGView::LoadMission()
         return nullptr;
     else if (missionNumber == 1)
         return LoadTutorial1();
+    else if (missionNumber == 2)
+        return nullptr;
+    else if (missionNumber == 3)
+        return LoadTutorial3();
     else
         return nullptr;
 }
@@ -142,6 +146,11 @@ osg::Geode* OSGView::LoadMission()
 void OSGView::TakeOutputs(std::vector<int> results)
 {
     this->solutions = results;
+}
+
+void OSGView::TakeInputs(std::vector<int> inputs)
+{
+    this->inputs = inputs;
 }
 
 void OSGView::SetSuccess(bool success)
@@ -173,6 +182,24 @@ osg::Geode* OSGView::LoadTutorial1()
     else
     {
         geode->addDrawable(createText3D(osg::Vec3(), " 3 + 2 = " + std::to_string(solutions[0]), 20.0f, 10.0f));
+        geode->addDrawable(Success());
+    }
+
+    return geode.release();
+}
+
+osg::Geode* OSGView::LoadTutorial3()
+{
+    // Create geode
+    osg::ref_ptr<osg::Geode> geode(new osg::Geode());
+
+    if (solutions.size() == 0 && inputs.size() != 0)
+    {
+        geode->addDrawable(createText3D(osg::Vec3(), "??? + 3 = ?", 20.0f, 10.0f));
+    }
+    else
+    {
+        geode->addDrawable(createText3D(osg::Vec3(), std::to_string(inputs[0]) + " + 3 = " + std::to_string(solutions[0]), 20.0f, 10.0f));
         geode->addDrawable(Success());
     }
 
