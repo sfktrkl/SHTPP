@@ -113,7 +113,7 @@ namespace Shoot
             }
             else if (condition == FileCondition.FileNotExist)
             {
-                FileStream fs = File.Create(fileName);
+                FileStream fs = File.Create(file);
                 fs.Close();
             }
 
