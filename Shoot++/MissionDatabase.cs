@@ -33,6 +33,8 @@ namespace Shoot
         {
             if (mission == "t1")
                 return Tutorial1();
+            else if (mission == "t2")
+                return Tutorial2();
             else if (mission == "t3")
                 return Tutorial3();
             else if (mission == "t4")
@@ -75,6 +77,53 @@ namespace Shoot
             "#Use SHOOT keyword to give your final results\n\n" +
             "#Important: Only integer calculations are possible\n\n" +
             "SHOOT 3 + 2",
+            // Mission inputs
+            inputs,
+            // Mission solutions
+            Solutions()
+            );
+        }
+
+        private static Data Tutorial2()
+        {
+            int[] inputs = new int[1];
+
+            Func<int[]> Solutions = delegate
+            {
+                int[] solutions = new int[inputs.Length];
+
+                for (int i = 0; i < inputs.Length; i++)
+                    solutions[i] = 20;
+
+                return solutions;
+            };
+
+            return new Data(
+            //Mission number
+            2,
+            // Mission Name
+            "Tutorial 2",
+            // Mission Note
+            "Aim of this tutorial is to learn how to create variables and use them. " +
+            "To declare a variable use $ and give a variable name. " +
+            "To define this variable you can simply use = with giving its value. " +
+            "It is again possible using any expression or value.\n" +
+            "Be careful, pressing ENTER is meant to pass to the next instruction.\n" +
+            "If you keep writing without pressing ENTER to the next line, it will be considered as one line. ",
+            // Mission default code
+            "#Create a variable using $\n" +
+            "#It is possible using a value or an expression\n" +
+            "#Example:\n" +
+            "#$NUMBER = 3 + 2\n" +
+            "#SHOOT $NUMBER\n" +
+            "#OR\n" +
+            "#$NUMBER = 5\n" +
+            "#SHOOT $NUMBER\n" +
+            "#OR\n" +
+            "#SHOOT 20\n\n" +
+            "$FIRST = 3 + 2\n" +
+            "$SECOND = 7 + 8\n\n" +
+            "SHOOT $FIRST + $SECOND",
             // Mission inputs
             inputs,
             // Mission solutions

@@ -33,6 +33,7 @@ private:
     bool CreateViewer();
     osg::Geode* LoadMission();
     osg::Geode* LoadTutorial1();
+    osg::Geode* LoadTutorial2();
     osg::Geode* LoadTutorial3();
     osg::Geode* LoadTutorial4();
 

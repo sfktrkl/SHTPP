@@ -136,7 +136,7 @@ osg::Geode* OSGView::LoadMission()
     else if (missionNumber == 1)
         return LoadTutorial1();
     else if (missionNumber == 2)
-        return nullptr;
+        return LoadTutorial2();
     else if (missionNumber == 3)
         return LoadTutorial3();
     else if (missionNumber == 4)
@@ -184,6 +184,28 @@ osg::Geode* OSGView::LoadTutorial1()
     else
     {
         geode->addDrawable(createText3D(osg::Vec3(), " 3 + 2 = " + std::to_string(solutions[0]), 20.0f, 10.0f));
+        geode->addDrawable(Success());
+    }
+
+    return geode.release();
+}
+
+osg::Geode* OSGView::LoadTutorial2()
+{
+    // Create geode
+    osg::ref_ptr<osg::Geode> geode(new osg::Geode());
+
+    if (solutions.size() == 0)
+    {
+        geode->addDrawable(createText3D(osg::Vec3(), " 3 + 2 = FIRST", 10.0f, 10.0f));
+        geode->addDrawable(createText3D(osg::Vec3(0.0f, 0.0f, -20.0f), " 7 + 8 = SECOND", 10.0f, 10.0f));
+        geode->addDrawable(createText3D(osg::Vec3(0.0f, 0.0f, -40.0f), " FIRST + SECOND = ???", 10.0f, 10.0f));
+    }
+    else
+    {
+        geode->addDrawable(createText3D(osg::Vec3(), " 3 + 2 = FIRST", 10.0f, 10.0f));
+        geode->addDrawable(createText3D(osg::Vec3(0.0f, 0.0f, -15.0f), " 7 + 8 = SECOND", 10.0f, 10.0f));
+        geode->addDrawable(createText3D(osg::Vec3(0.0f, 0.0f, -30.0f), " FIRST + SECOND = " + std::to_string(solutions[0]), 10.0f, 10.0f));
         geode->addDrawable(Success());
     }
 
