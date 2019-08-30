@@ -123,5 +123,10 @@ namespace Shoot
             viewer.Destroy();
             UiManager.CloseGameForm();
         }
+
+        private void help_Click(object sender, EventArgs e)
+        {
+            UiManager.CreateHelpForm();
+        }
     }
 }

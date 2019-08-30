@@ -81,7 +81,7 @@
             this.tutorial6.Name = "tutorial6";
             this.tutorial6.Size = new System.Drawing.Size(191, 24);
             this.tutorial6.TabIndex = 9;
-            this.tutorial6.Text = "- Using Functions";
+            this.tutorial6.Text = "- DEBUGGING";
             this.tutorial6.Click += new System.EventHandler(this.tutorial6_Click);
             // 
             // tutorial5
@@ -92,7 +92,7 @@
             this.tutorial5.Name = "tutorial5";
             this.tutorial5.Size = new System.Drawing.Size(145, 24);
             this.tutorial5.TabIndex = 8;
-            this.tutorial5.Text = "- USING WHILE";
+            this.tutorial5.Text = "- USING LOOPS";
             this.tutorial5.Click += new System.EventHandler(this.tutorial5_Click);
             // 
             // tutorial4

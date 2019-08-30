@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.OSGPanel = new System.Windows.Forms.Panel();
+            this.renderArea = new System.Windows.Forms.PictureBox();
             this.codeText = new System.Windows.Forms.RichTextBox();
             this.title = new System.Windows.Forms.Label();
             this.missionNote = new System.Windows.Forms.Label();
             this.back = new Shoot.ClickableLabel();
             this.save = new Shoot.ClickableLabel();
             this.run = new Shoot.ClickableLabel();
-            this.renderArea = new System.Windows.Forms.PictureBox();
+            this.help = new Shoot.ClickableLabel();
             this.OSGPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.renderArea)).BeginInit();
             this.SuspendLayout();
@@ -48,6 +49,15 @@
             this.OSGPanel.Name = "OSGPanel";
             this.OSGPanel.Size = new System.Drawing.Size(800, 600);
             this.OSGPanel.TabIndex = 0;
+            // 
+            // renderArea
+            // 
+            this.renderArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderArea.Location = new System.Drawing.Point(0, 0);
+            this.renderArea.Name = "renderArea";
+            this.renderArea.Size = new System.Drawing.Size(800, 600);
+            this.renderArea.TabIndex = 0;
+            this.renderArea.TabStop = false;
             // 
             // codeText
             // 
@@ -115,14 +125,16 @@
             this.run.Text = "Run";
             this.run.Click += new System.EventHandler(this.run_Click);
             // 
-            // renderArea
+            // help
             // 
-            this.renderArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderArea.Location = new System.Drawing.Point(0, 0);
-            this.renderArea.Name = "renderArea";
-            this.renderArea.Size = new System.Drawing.Size(800, 600);
-            this.renderArea.TabIndex = 0;
-            this.renderArea.TabStop = false;
+            this.help.AutoSize = true;
+            this.help.Font = new System.Drawing.Font("Algerian", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help.Location = new System.Drawing.Point(12, 817);
+            this.help.Name = "help";
+            this.help.Size = new System.Drawing.Size(96, 35);
+            this.help.TabIndex = 8;
+            this.help.Text = "HELP";
+            this.help.Click += new System.EventHandler(this.help_Click);
             // 
             // GameForm
             // 
@@ -130,6 +142,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1424, 861);
             this.ControlBox = false;
+            this.Controls.Add(this.help);
             this.Controls.Add(this.back);
             this.Controls.Add(this.save);
             this.Controls.Add(this.run);
@@ -161,5 +174,6 @@
         private ClickableLabel save;
         private ClickableLabel back;
         private System.Windows.Forms.PictureBox renderArea;
+        private ClickableLabel help;
     }
 }
