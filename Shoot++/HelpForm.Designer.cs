@@ -57,13 +57,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.debug = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // quit
             // 
             this.quit.AutoSize = true;
             this.quit.Font = new System.Drawing.Font("Algerian", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quit.Location = new System.Drawing.Point(684, 517);
+            this.quit.Location = new System.Drawing.Point(684, 567);
             this.quit.Name = "quit";
             this.quit.Size = new System.Drawing.Size(88, 35);
             this.quit.TabIndex = 8;
@@ -95,7 +98,7 @@
             // 
             this.input.AutoSize = true;
             this.input.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.input.Location = new System.Drawing.Point(80, 140);
+            this.input.Location = new System.Drawing.Point(80, 160);
             this.input.Name = "input";
             this.input.Size = new System.Drawing.Size(76, 26);
             this.input.TabIndex = 11;
@@ -115,7 +118,7 @@
             // 
             this.ifthen.AutoSize = true;
             this.ifthen.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ifthen.Location = new System.Drawing.Point(80, 200);
+            this.ifthen.Location = new System.Drawing.Point(80, 220);
             this.ifthen.Name = "ifthen";
             this.ifthen.Size = new System.Drawing.Size(120, 26);
             this.ifthen.TabIndex = 13;
@@ -125,7 +128,7 @@
             // 
             this.ifelse.AutoSize = true;
             this.ifelse.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ifelse.Location = new System.Drawing.Point(80, 230);
+            this.ifelse.Location = new System.Drawing.Point(80, 250);
             this.ifelse.Name = "ifelse";
             this.ifelse.Size = new System.Drawing.Size(68, 26);
             this.ifelse.TabIndex = 14;
@@ -135,7 +138,7 @@
             // 
             this.endif.AutoSize = true;
             this.endif.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endif.Location = new System.Drawing.Point(80, 260);
+            this.endif.Location = new System.Drawing.Point(80, 280);
             this.endif.Name = "endif";
             this.endif.Size = new System.Drawing.Size(75, 26);
             this.endif.TabIndex = 15;
@@ -145,7 +148,7 @@
             // 
             this.loopthen.AutoSize = true;
             this.loopthen.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loopthen.Location = new System.Drawing.Point(80, 320);
+            this.loopthen.Location = new System.Drawing.Point(80, 340);
             this.loopthen.Name = "loopthen";
             this.loopthen.Size = new System.Drawing.Size(157, 26);
             this.loopthen.TabIndex = 16;
@@ -155,7 +158,7 @@
             // 
             this.endloop.AutoSize = true;
             this.endloop.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endloop.Location = new System.Drawing.Point(80, 350);
+            this.endloop.Location = new System.Drawing.Point(80, 370);
             this.endloop.Name = "endloop";
             this.endloop.Size = new System.Drawing.Size(112, 26);
             this.endloop.TabIndex = 17;
@@ -255,7 +258,7 @@
             // 
             this.comparison.AutoSize = true;
             this.comparison.Font = new System.Drawing.Font("Algerian", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comparison.Location = new System.Drawing.Point(400, 410);
+            this.comparison.Location = new System.Drawing.Point(400, 420);
             this.comparison.Name = "comparison";
             this.comparison.Size = new System.Drawing.Size(315, 26);
             this.comparison.TabIndex = 27;
@@ -265,7 +268,7 @@
             // 
             this.equalTo.AutoSize = true;
             this.equalTo.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equalTo.Location = new System.Drawing.Point(450, 450);
+            this.equalTo.Location = new System.Drawing.Point(450, 460);
             this.equalTo.Name = "equalTo";
             this.equalTo.Size = new System.Drawing.Size(157, 26);
             this.equalTo.TabIndex = 28;
@@ -275,7 +278,7 @@
             // 
             this.variableName.AutoSize = true;
             this.variableName.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.variableName.Location = new System.Drawing.Point(80, 450);
+            this.variableName.Location = new System.Drawing.Point(80, 530);
             this.variableName.Name = "variableName";
             this.variableName.Size = new System.Drawing.Size(208, 26);
             this.variableName.TabIndex = 29;
@@ -285,7 +288,7 @@
             // 
             this.variable.AutoSize = true;
             this.variable.Font = new System.Drawing.Font("Algerian", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.variable.Location = new System.Drawing.Point(60, 410);
+            this.variable.Location = new System.Drawing.Point(60, 490);
             this.variable.Name = "variable";
             this.variable.Size = new System.Drawing.Size(265, 26);
             this.variable.TabIndex = 30;
@@ -294,7 +297,7 @@
             // seperator1
             // 
             this.seperator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.seperator1.Location = new System.Drawing.Point(50, 180);
+            this.seperator1.Location = new System.Drawing.Point(50, 200);
             this.seperator1.Name = "seperator1";
             this.seperator1.Size = new System.Drawing.Size(300, 2);
             this.seperator1.TabIndex = 31;
@@ -302,7 +305,7 @@
             // label1
             // 
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(50, 300);
+            this.label1.Location = new System.Drawing.Point(50, 320);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(300, 2);
             this.label1.TabIndex = 32;
@@ -310,7 +313,7 @@
             // label2
             // 
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(50, 390);
+            this.label2.Location = new System.Drawing.Point(50, 410);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(300, 2);
             this.label2.TabIndex = 33;
@@ -320,7 +323,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label3.Location = new System.Drawing.Point(380, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(2, 450);
+            this.label3.Size = new System.Drawing.Size(2, 500);
             this.label3.TabIndex = 34;
             // 
             // label4
@@ -334,17 +337,46 @@
             // label5
             // 
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label5.Location = new System.Drawing.Point(400, 390);
+            this.label5.Location = new System.Drawing.Point(400, 400);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(320, 2);
             this.label5.TabIndex = 36;
+            // 
+            // debug
+            // 
+            this.debug.AutoSize = true;
+            this.debug.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.debug.Location = new System.Drawing.Point(80, 430);
+            this.debug.Name = "debug";
+            this.debug.Size = new System.Drawing.Size(88, 26);
+            this.debug.TabIndex = 37;
+            this.debug.Text = "debug";
+            // 
+            // label6
+            // 
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label6.Location = new System.Drawing.Point(50, 470);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(300, 2);
+            this.label6.TabIndex = 38;
+            // 
+            // label7
+            // 
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label7.Location = new System.Drawing.Point(50, 140);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(300, 2);
+            this.label7.TabIndex = 39;
             // 
             // HelpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 611);
             this.ControlBox = false;
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.debug);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -418,5 +450,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label debug;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
