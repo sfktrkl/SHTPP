@@ -35,6 +35,8 @@ namespace Shoot
                 return Tutorial1();
             else if (mission == "t3")
                 return Tutorial3();
+            else if (mission == "t4")
+                return Tutorial4();
             else
                 return new Data();
         }
@@ -124,6 +126,59 @@ namespace Shoot
                 "#SHOOT $CALCULATEDVALUE\n\n" +
                 "INPUT $MYVARIABLE\n" +
                 "SHOOT 3 + $MYVARIABLE",
+                // Mission inputs
+                inputs,
+                // Mission solutions
+                Solutions()
+                );
+        }
+
+        private static Data Tutorial4()
+        {
+            Func<int[]> CreateInputs = delegate
+            {
+                int[] created = new int[1];
+                Random randomNumber = new Random();
+                created[0] = randomNumber.Next(0, 100);
+                return created;
+            };
+
+            int[] inputs = CreateInputs();
+
+            Func<int[]> Solutions = delegate
+            {
+                int[] solutions = new int[inputs.Length];
+
+                for (int i = 0; i < inputs.Length; i++)
+                    solutions[i] = inputs[i] % 2;
+
+                return solutions;
+            };
+
+            return new Data(
+                //Mission number
+                4,
+                // Mission Name
+                "Tutorial 4",
+                // Mission Note
+                "Aim of this tutorial is to learn how to use if else statements. " +
+                "IF keyword is used for evaluating the test expression. " +
+                "After the test expression THEN keyword should be used to jump to body. " +
+                "Body should also end with the ENDIF keyword.\n" +
+                "Inputs: Single integer number. \n" + 
+                "Output: Shoot 1 for odd, 0 for even number.",
+                // Mission default code
+                "#Use IF, THEN and ENDIF keywords.\n" +
+                "#Example:\n" +
+                "#IF 5 == 5 THEN\n" +
+                "#   SHOOT 1\n" +
+                "#ENDIF\n\n" +
+                "INPUT $NUMBER\n\n" +
+                "IF $NUMBER % 2 == 0 THEN\n" +
+                "   SHOOT 0\n" +
+                "ELSE\n" + 
+                "   SHOOT 1\n" +
+                "ENDIF\n\n",
                 // Mission inputs
                 inputs,
                 // Mission solutions

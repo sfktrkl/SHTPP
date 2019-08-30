@@ -132,17 +132,22 @@ const void Interpreter::Lexer(const std::string& fileContents, toks& tokens)
             tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
             token = "";
         }
-        else if (token == "BITIR")
+        else if (token == "ENDIF")
         {
             tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
             token = "";
         }
-        else if (token == "EGER")
+        else if (token == "ELSE")
         {
             tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
             token = "";
         }
-        else if (token == "ISE")
+        else if (token == "IF")
+        {
+            tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
+            token = "";
+        }
+        else if (token == "THEN")
         {
             if (expression != "" && isExpression == true)
             {

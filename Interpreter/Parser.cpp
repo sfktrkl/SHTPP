@@ -2,8 +2,7 @@
 
 const void Interpreter::Parser(toks& tokens, vars& variables)
 {
-    std::vector<toks> ifTokens;
-    Conditioner(tokens, ifTokens, variables);
+    iftoks ifTokens;
 
     std::size_t i = 0;
     while (i < tokens.size())
@@ -129,15 +128,29 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                 return;
             }
         }
+        else if (tokens[i].first == TokenType::KEYWORD && tokens[i].second == "IF")
+        {
+            if (tokens.size() > i + 1)
+            {
+                Conditioner(i, tokens, ifTokens, variables);
+                i--;
+            }
+            else
+            {
+                AddOutput("SOZ DIZIMI HATASI: IFADE BULUNAMADI!", true);
+                return;
+            }
+        }
         else if (tokens[i].first == TokenType::STATEMENT)
         {
             if (tokens[i + 1].first == TokenType::CONDITION && tokens[i + 1].second == "TRUE")
             {
-                Parser(ifTokens[std::stoi(tokens[i].second)], variables);
+                Parser(std::get<0>(ifTokens[std::stoi(tokens[i].second)]), variables);
                 i += 1;
             }
             else if (tokens[i + 1].first == TokenType::CONDITION && tokens[i + 1].second == "FALSE")
             {
+                Parser(std::get<1>(ifTokens[std::stoi(tokens[i].second)]), variables);
                 i += 1;
             }
             else
