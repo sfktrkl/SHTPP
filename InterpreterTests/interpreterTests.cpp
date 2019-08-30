@@ -57,8 +57,8 @@ namespace InterpreterTests
             filePath = "..\\TestFiles\\INPUT.sfk";
 
             std::ostringstream ss;
-            ss  << "INPUT $MYVARIABLE\n"
-                << "SHOOT 3 + $MYVARIABLE";
+            ss  << "INPUT $MYVARIABLE\n" <<
+                "SHOOT 3 + $MYVARIABLE";
             fileContents = ss.str();
 
             srand((int)time(0));
@@ -78,12 +78,12 @@ namespace InterpreterTests
             filePath = "..\\TestFiles\\IF.sfk";
 
             std::ostringstream ss;
-            ss  << "INPUT $NUMBER\n"
-                << "IF $NUMBER % 2 == 0 THEN\n"
-                << "SHOOT 0\n"
-                << "ELSE\n"
-                << "SHOOT 1\n"
-                << "ENDIF";
+            ss << "INPUT $NUMBER\n" <<
+                "IF $NUMBER % 2 == 0 THEN\n" <<
+                "   SHOOT 0\n" <<
+                "ELSE\n" <<
+                "   SHOOT 1\n" <<
+                "ENDIF";
 
             fileContents = ss.str();
 
@@ -98,5 +98,46 @@ namespace InterpreterTests
             Assert::AreEqual(size_t(1), outputs.size());
             Assert::AreEqual(randomNumber % 2, outputs[0]);
         }
+
+        TEST_METHOD(NESTEDIF)
+        {
+            filePath = "..\\TestFiles\\NESTEDIF.sfk";
+
+            std::ostringstream ss;
+            ss  << "INPUT $NUMBER\n" <<
+                "$RESULT = $NUMBER % 2\n" <<
+                "IF $RESULT == 0 THEN\n" <<
+                "   SHOOT 0\n" <<
+                "   IF $RESULT == 0 THEN\n" <<
+                "       SHOOT 0\n" <<
+                "       IF $RESULT == 1 THEN\n" <<
+                "           SHOOT 0\n" <<
+                "       ENDIF\n" <<
+                "   ENDIF\n" <<
+                "ELSE\n" <<
+                "   SHOOT 1\n" <<
+                "   IF $RESULT == 1 THEN\n" <<
+                "       SHOOT 1\n" <<
+                "   ENDIF\n" <<
+                "   IF $RESULT == 0 THEN\n" <<
+                "       SHOOT 0\n" <<
+                "   ENDIF\n" <<
+                "ENDIF";
+
+            fileContents = ss.str();
+
+            srand((int)time(0));
+            int randomNumber = rand() % 100;
+            inputs = { randomNumber };
+
+            Begin();
+
+            std::vector<int> outputs = interpreter->GiveOutputs();
+
+            Assert::AreEqual(size_t(2), outputs.size());
+            Assert::AreEqual(randomNumber % 2, outputs[0]);
+            Assert::AreEqual(randomNumber % 2, outputs[1]);
+        }
+
 	};
 }
