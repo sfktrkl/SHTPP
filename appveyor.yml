@@ -5,10 +5,16 @@ platform:
 - x64
 build:
   verbosity: minimal
-test:
-  assemblies:
-    only:
-    - 'InterpreterTests\InterpreterTests.dll'
+before_test:
+- ps: .\scripts\beforeTest.ps1
+test_script:
+- ps: .\scripts\test.ps1
+after_test:
+- ps: .\scripts\afterTest.ps1
+on_success:
+- ps: .\scripts\onSuccess.ps1
+on_finish:
+- ps: .\scripts\finish.ps1
 artifacts:
 - path: shootpp.zip
   name: Shoot++
