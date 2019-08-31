@@ -1,9 +1,18 @@
 #include "Interpreter.h"
 
-void Interpreter::AddOutput(std::string text, bool error)
+void Interpreter::AddDebugOutput(std::string text, bool error, bool isShoot)
 {
-    if (error) return;
+    if (error)
+        debugOutputs.push_back("-----------------------------------------------------\n");
 
+    if (isShoot)
+        debugOutputs.push_back("SHOOT: " + text);
+    else
+        debugOutputs.push_back("DEBUG: " + text);
+}
+
+void Interpreter::AddOutput(std::string text)
+{
     outputs.push_back(std::stoi(text));
 }
 

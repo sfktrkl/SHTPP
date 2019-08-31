@@ -39,6 +39,8 @@ namespace Shoot
                 return Tutorial3();
             else if (mission == "t4")
                 return Tutorial4();
+            else if (mission == "t6")
+                return Tutorial6();
             else
                 return new Data();
         }
@@ -228,6 +230,65 @@ namespace Shoot
                 "ELSE\n" + 
                 "   SHOOT 1\n" +
                 "ENDIF\n\n",
+                // Mission inputs
+                inputs,
+                // Mission solutions
+                Solutions()
+                );
+        }
+
+        private static Data Tutorial6()
+        {
+            Func<int[]> CreateInputs = delegate
+            {
+                int[] created = new int[1];
+                Random randomNumber = new Random();
+                created[0] = randomNumber.Next(0, 100);
+                return created;
+            };
+
+            int[] inputs = CreateInputs();
+
+            Func<int[]> Solutions = delegate
+            {
+                int[] solutions = new int[inputs.Length];
+
+                for (int i = 0; i < inputs.Length; i++)
+                    solutions[i] = inputs[i] % 2;
+
+                return solutions;
+            };
+
+            return new Data(
+                //Mission number
+                6,
+                // Mission Name
+                "Tutorial 6",
+                // Mission Note
+                "Aim of this tutorial is to learn how to use debugging. " +
+                "DEBUG keyword is used for printing any variable, expression or value to debug screen. " +
+                "SHOOT keyword can also prints the results to the debug screen. " +
+                "You can choose printing SHOOT keyword outputs or not.\n" +
+                "Relax, Debug keyword will not effect any of your return values.\n" +
+                "Inputs: Single integer number. " +
+                "Output: SHOOT 1 for odd, 0 for even number.",
+                // Mission default code
+                "#Use DEBUG keyword to print to debug screen.\n" +
+                "#Example:\n" +
+                "#DEBUG 5\n" +
+                "#DEBUG 3 + 2\n" +
+                "#$FIVE = 5\n" +
+                "#DEBUG \"GIVE ME FIVE\"\n" +
+                "#DEBUG $FIVE\n\n" +
+                "INPUT $NUMBER\n\n" +
+                "$RESULT = $NUMBER % 2\n" +
+                "DEBUG $RESULT\n" +
+                "IF $RESULT == 0 THEN\n" +
+                "   SHOOT 0\n" +
+                "ELSE\n" +
+                "   SHOOT 1\n" +
+                "ENDIF\n\n" +
+                "DEBUG \"HAVE FUN\"",
                 // Mission inputs
                 inputs,
                 // Mission solutions

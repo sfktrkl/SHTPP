@@ -10,30 +10,42 @@ namespace Shoot
         private OSGViewClassWrapper viewer = new OSGViewClassWrapper();
         private InterpreterClassWrapper interpreter;
         private int[] solutions;
-        private MissionDatabase.Data mission;
+        string[] debugOutputs;
+        private Mission mission;
+        public static bool isDebugShoot = true;
 
-        public GameForm(MissionDatabase.Data mission)
+        public GameForm(Mission mission)
         {
             InitializeComponent();
 
             this.mission = mission;
 
-            this.title.Text = mission.name;
-            this.Text = mission.name;
-            this.missionNote.Text = mission.note;
+            this.title.Text = mission.data.name;
+            this.Text = mission.data.name;
+            this.missionNote.Text = mission.data.note;
 
             string content = FileReadWrite.ReadFile(this.Text.ToString());
             if (content != null)
                 this.codeText.Text = content;
             else
-                this.codeText.Text = mission.code;
+                this.codeText.Text = mission.data.code;
 
-            solutions = mission.solutions;
+            solutions = mission.data.solutions;
 
-            viewer.SetMission(mission.number);
-            GiveInputsToViewer(mission.inputs);
+            viewer.SetMission(mission.data.number);
+            GiveInputsToViewer(mission.data.inputs);
 
             renderArea.Paint += new PaintEventHandler(Painter);
+        }
+
+        private void RefreshMission()
+        {
+            this.mission.RefreshMission();
+
+            solutions = mission.data.solutions;
+
+            viewer.SetMission(mission.data.number);
+            GiveInputsToViewer(mission.data.inputs);
         }
 
         private void Painter(object sender, PaintEventArgs e)
@@ -59,6 +71,9 @@ namespace Shoot
                     interpreter.GiveInputs(inputs);
                 }
             }
+
+            //Disabled, since debugInfo button takes over the task.
+            //interpreter.SetDebugMode(isDebugShoot);
 
             interpreter.Execute();
         }
@@ -87,11 +102,17 @@ namespace Shoot
 
         private void run_Click(object sender, System.EventArgs e)
         {
+            RefreshMission();
+
             string content = this.codeText.Text.ToUpper();
             string file = FileReadWrite.WriteFile(content, this.Text.ToString());
-            CallInterpreter(file, mission.inputs);
+            CallInterpreter(file, mission.data.inputs);
 
             int[] outputs = interpreter.TakeOutputs();
+            debugOutputs = interpreter.TakeDebugOutputs();
+
+            if (UiManager.debugForm != null)
+                UiManager.debugForm.GetDebugOutputs(debugOutputs);
 
             GiveOutputsToViewer(outputs);
 
@@ -127,6 +148,11 @@ namespace Shoot
         private void help_Click(object sender, EventArgs e)
         {
             UiManager.CreateHelpForm();
+        }
+
+        private void debug_Click(object sender, EventArgs e)
+        {
+            UiManager.CreateDebugForm(debugOutputs);
         }
     }
 }

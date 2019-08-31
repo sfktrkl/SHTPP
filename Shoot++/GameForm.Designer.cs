@@ -37,6 +37,7 @@
             this.save = new Shoot.ClickableLabel();
             this.run = new Shoot.ClickableLabel();
             this.help = new Shoot.ClickableLabel();
+            this.debug = new Shoot.ClickableLabel();
             this.OSGPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.renderArea)).BeginInit();
             this.SuspendLayout();
@@ -136,12 +137,24 @@
             this.help.Text = "HELP";
             this.help.Click += new System.EventHandler(this.help_Click);
             // 
+            // debug
+            // 
+            this.debug.AutoSize = true;
+            this.debug.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.debug.Location = new System.Drawing.Point(39, 753);
+            this.debug.Name = "debug";
+            this.debug.Size = new System.Drawing.Size(93, 26);
+            this.debug.TabIndex = 9;
+            this.debug.Text = "debug";
+            this.debug.Click += new System.EventHandler(this.debug_Click);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1424, 861);
             this.ControlBox = false;
+            this.Controls.Add(this.debug);
             this.Controls.Add(this.help);
             this.Controls.Add(this.back);
             this.Controls.Add(this.save);
@@ -175,5 +188,6 @@
         private ClickableLabel back;
         private System.Windows.Forms.PictureBox renderArea;
         private ClickableLabel help;
+        private ClickableLabel debug;
     }
 }

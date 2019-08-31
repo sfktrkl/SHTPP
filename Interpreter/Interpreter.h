@@ -19,15 +19,25 @@ public:
         toks tokens;
         vars variables;
 
-        Lexer(fileContents, tokens);
-        Parser(tokens, variables);
+        try
+        {
+            Lexer(fileContents, tokens);
+            Parser(tokens, variables);
+        }
+        catch (...)
+        {
+            AddDebugOutput("UNKNOWN ERROR", true);
+        }
     }
 
     std::vector<int> GiveOutputs() { return outputs; }
+    std::vector<std::string> GiveDebugOutputs() { return debugOutputs; }
     void TakeInputs(std::vector<int> inputs) { this->inputs = inputs; inputNumber = 0; }
+    void SetDebugMode(bool isDebugShoot) { this->isDebugShoot = isDebugShoot; }
 
 private:
-    void AddOutput(std::string text, bool error = false);
+    void AddDebugOutput(std::string text, bool error = false, bool isShoot = false);
+    void AddOutput(std::string text);
     const std::string OpenFile(const char* filename);
     const std::string EvaluateExpression(std::string expression, vars& variables);
     const void Lexer(const std::string& fileContents, toks& tokens);
@@ -43,4 +53,7 @@ private:
     std::vector<int> outputs;
     std::vector<int> inputs;
     int inputNumber{ };
+
+    bool isDebugShoot = true;
+    std::vector<std::string> debugOutputs;
 };

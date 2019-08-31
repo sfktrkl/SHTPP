@@ -2,16 +2,18 @@
 {
     public class Mission
     {
+        public MissionDatabase.Data data;
+        private string missionName;
+
         public Mission(string mission)
         {
-            this.missionData = MissionDatabase.GetMission(mission);
+            this.missionName = mission;
+            this.data = MissionDatabase.GetMission(missionName);
         }
 
-        private MissionDatabase.Data missionData;
-
-        public MissionDatabase.Data GetMission()
+        public void RefreshMission()
         {
-            return missionData;
+            this.data = MissionDatabase.GetMission(missionName);
         }
     }
 }

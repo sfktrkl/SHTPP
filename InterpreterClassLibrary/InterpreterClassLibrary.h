@@ -14,7 +14,9 @@ namespace InterpreterClassLibrary {
         void Execute();
 
         array<int>^ TakeOutputs();
+        array<String^>^ TakeDebugOutputs();
         void GiveInputs(int* inputs);
+        void SetDebugMode(bool isDebugShoot);
     private:
         Interpreter* interpreter;
 	};

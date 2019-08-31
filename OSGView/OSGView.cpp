@@ -141,6 +141,8 @@ osg::Geode* OSGView::LoadMission()
         return LoadTutorial3();
     else if (missionNumber == 4)
         return LoadTutorial4();
+    else if (missionNumber == 6)
+        return LoadTutorial4();
     else
         return nullptr;
 }

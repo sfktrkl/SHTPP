@@ -26,10 +26,11 @@ namespace InterpreterTests
         std::vector<int> inputs;
         std::shared_ptr<Interpreter> interpreter = nullptr;
 
-        void Begin()
+        void Begin(bool isDebugShoot = true)
         {
             saveFile(fileContents);
             interpreter = std::make_shared<Interpreter>(filePath);
+            interpreter->SetDebugMode(isDebugShoot);
             interpreter->TakeInputs(inputs);
             interpreter->Execute();
         }
@@ -137,6 +138,68 @@ namespace InterpreterTests
             Assert::AreEqual(size_t(2), outputs.size());
             Assert::AreEqual(randomNumber % 2, outputs[0]);
             Assert::AreEqual(randomNumber % 2, outputs[1]);
+        }
+
+        TEST_METHOD(DEBUG)
+        {
+            filePath = "..\\TestFiles\\DEBUG.sfk";
+
+            std::ostringstream ss;
+            ss << "DEBUG 5\n" <<
+                "DEBUG 7 + 8\n" <<
+                "$FIVE = 5\n" <<
+                "DEBUG $FIVE\n" <<
+                "DEBUG \"GOOD GAME\"\n" <<
+                "INPUT $NUMBER\n" <<
+                "$RESULT = $NUMBER % 2\n" <<
+                "DEBUG $RESULT\n" <<
+                "IF $RESULT == 0 THEN\n" <<
+                "   SHOOT 0\n" <<
+                "ELSE\n" <<
+                "   SHOOT 1\n" <<
+                "ENDIF" <<
+                "DEBUG \"HAVE FUN\"";
+
+            fileContents = ss.str();
+
+            srand((int)time(0));
+            int randomNumber = rand() % 100;
+            inputs = { randomNumber };
+
+            Begin();
+
+            std::vector<int> outputs = interpreter->GiveOutputs();
+
+            Assert::AreEqual(size_t(1), outputs.size());
+            Assert::AreEqual(randomNumber % 2, outputs[0]);
+
+            std::vector<std::string> debugOutputs = interpreter->GiveDebugOutputs();
+
+            Assert::AreEqual(size_t(7), debugOutputs.size());
+            Assert::AreEqual("DEBUG: 5", debugOutputs[0].c_str());
+            Assert::AreEqual("DEBUG: 15", debugOutputs[1].c_str());
+            Assert::AreEqual("DEBUG: 5", debugOutputs[2].c_str());
+            Assert::AreEqual("DEBUG: GOOD GAME", debugOutputs[3].c_str());
+            Assert::AreEqual("DEBUG: " + std::to_string(randomNumber % 2), debugOutputs[4]);
+            Assert::AreEqual("SHOOT: " + std::to_string(randomNumber % 2), debugOutputs[5]);
+            Assert::AreEqual("DEBUG: HAVE FUN", debugOutputs[6].c_str());
+
+            Begin(false);
+
+            outputs = interpreter->GiveOutputs();
+
+            Assert::AreEqual(size_t(1), outputs.size());
+            Assert::AreEqual(randomNumber % 2, outputs[0]);
+
+            debugOutputs = interpreter->GiveDebugOutputs();
+
+            Assert::AreEqual(size_t(6), debugOutputs.size());
+            Assert::AreEqual("DEBUG: 5", debugOutputs[0].c_str());
+            Assert::AreEqual("DEBUG: 15", debugOutputs[1].c_str());
+            Assert::AreEqual("DEBUG: 5", debugOutputs[2].c_str());
+            Assert::AreEqual("DEBUG: GOOD GAME", debugOutputs[3].c_str());
+            Assert::AreEqual("DEBUG: " + std::to_string(randomNumber % 2), debugOutputs[4]);
+            Assert::AreEqual("DEBUG: HAVE FUN", debugOutputs[5].c_str());
         }
 
 	};

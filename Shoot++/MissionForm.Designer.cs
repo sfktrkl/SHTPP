@@ -31,14 +31,14 @@
             this.title = new System.Windows.Forms.Label();
             this.tutorialsLabel = new System.Windows.Forms.Label();
             this.missionsLabel = new System.Windows.Forms.Label();
-            this.tutorial6 = new Shoot.ClickableLabel();
-            this.tutorial5 = new Shoot.ClickableLabel();
-            this.tutorial4 = new Shoot.ClickableLabel();
-            this.tutorial3 = new Shoot.ClickableLabel();
-            this.tutorial2 = new Shoot.ClickableLabel();
-            this.tutorial1 = new Shoot.ClickableLabel();
-            this.mission1 = new Shoot.ClickableLabel();
-            this.mission2 = new Shoot.ClickableLabel();
+            this.tutorial6 = new Shoot.MissionLabel();
+            this.tutorial5 = new Shoot.MissionLabel();
+            this.tutorial4 = new Shoot.MissionLabel();
+            this.tutorial3 = new Shoot.MissionLabel();
+            this.tutorial2 = new Shoot.MissionLabel();
+            this.tutorial1 = new Shoot.MissionLabel();
+            this.mission1 = new Shoot.MissionLabel();
+            this.mission2 = new Shoot.MissionLabel();
             this.quit = new Shoot.ClickableLabel();
             this.SuspendLayout();
             // 
@@ -79,10 +79,10 @@
             this.tutorial6.Font = new System.Drawing.Font("Algerian", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tutorial6.Location = new System.Drawing.Point(430, 160);
             this.tutorial6.Name = "tutorial6";
-            this.tutorial6.Size = new System.Drawing.Size(191, 24);
+            this.tutorial6.Size = new System.Drawing.Size(136, 24);
             this.tutorial6.TabIndex = 9;
+            this.tutorial6.Tag = "t6";
             this.tutorial6.Text = "- DEBUGGING";
-            this.tutorial6.Click += new System.EventHandler(this.tutorial6_Click);
             // 
             // tutorial5
             // 
@@ -90,10 +90,10 @@
             this.tutorial5.Font = new System.Drawing.Font("Algerian", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tutorial5.Location = new System.Drawing.Point(430, 130);
             this.tutorial5.Name = "tutorial5";
-            this.tutorial5.Size = new System.Drawing.Size(145, 24);
+            this.tutorial5.Size = new System.Drawing.Size(146, 24);
             this.tutorial5.TabIndex = 8;
+            this.tutorial5.Tag = "t5";
             this.tutorial5.Text = "- USING LOOPS";
-            this.tutorial5.Click += new System.EventHandler(this.tutorial5_Click);
             // 
             // tutorial4
             // 
@@ -103,8 +103,8 @@
             this.tutorial4.Name = "tutorial4";
             this.tutorial4.Size = new System.Drawing.Size(159, 24);
             this.tutorial4.TabIndex = 7;
+            this.tutorial4.Tag = "t4";
             this.tutorial4.Text = "- Using IF-ELSE";
-            this.tutorial4.Click += new System.EventHandler(this.tutorial4_Click);
             // 
             // tutorial3
             // 
@@ -112,10 +112,10 @@
             this.tutorial3.Font = new System.Drawing.Font("Algerian", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tutorial3.Location = new System.Drawing.Point(120, 160);
             this.tutorial3.Name = "tutorial3";
-            this.tutorial3.Size = new System.Drawing.Size(89, 24);
+            this.tutorial3.Size = new System.Drawing.Size(170, 24);
             this.tutorial3.TabIndex = 6;
+            this.tutorial3.Tag = "t3";
             this.tutorial3.Text = "- TAKING INPUTS";
-            this.tutorial3.Click += new System.EventHandler(this.tutorial3_Click);
             // 
             // tutorial2
             // 
@@ -125,8 +125,8 @@
             this.tutorial2.Name = "tutorial2";
             this.tutorial2.Size = new System.Drawing.Size(199, 24);
             this.tutorial2.TabIndex = 5;
+            this.tutorial2.Tag = "t2";
             this.tutorial2.Text = "- Using Variables";
-            this.tutorial2.Click += new System.EventHandler(this.tutorial2_Click);
             // 
             // tutorial1
             // 
@@ -136,8 +136,8 @@
             this.tutorial1.Name = "tutorial1";
             this.tutorial1.Size = new System.Drawing.Size(223, 24);
             this.tutorial1.TabIndex = 4;
+            this.tutorial1.Tag = "t1";
             this.tutorial1.Text = "- Returning Results";
-            this.tutorial1.Click += new System.EventHandler(this.tutorial1_Click);
             // 
             // mission1
             // 
@@ -147,8 +147,8 @@
             this.mission1.Name = "mission1";
             this.mission1.Size = new System.Drawing.Size(117, 24);
             this.mission1.TabIndex = 10;
+            this.mission1.Tag = "m1";
             this.mission1.Text = "- Mission 1";
-            this.mission1.Click += new System.EventHandler(this.mission1_Click);
             // 
             // mission2
             // 
@@ -158,8 +158,8 @@
             this.mission2.Name = "mission2";
             this.mission2.Size = new System.Drawing.Size(117, 24);
             this.mission2.TabIndex = 11;
+            this.mission2.Tag = "m2";
             this.mission2.Text = "- MIssion 2";
-            this.mission2.Click += new System.EventHandler(this.mission2_Click);
             // 
             // quit
             // 
@@ -207,14 +207,14 @@
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Label tutorialsLabel;
         private System.Windows.Forms.Label missionsLabel;
-        private ClickableLabel tutorial1;
-        private ClickableLabel tutorial2;
-        private ClickableLabel tutorial3;
-        private ClickableLabel tutorial4;
-        private ClickableLabel tutorial5;
-        private ClickableLabel tutorial6;
-        private ClickableLabel mission1;
-        private ClickableLabel mission2;
+        private MissionLabel tutorial1;
+        private MissionLabel tutorial2;
+        private MissionLabel tutorial3;
+        private MissionLabel tutorial4;
+        private MissionLabel tutorial5;
+        private MissionLabel tutorial6;
+        private MissionLabel mission1;
+        private MissionLabel mission2;
         private ClickableLabel quit;
     }
 }

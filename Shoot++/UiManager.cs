@@ -7,14 +7,16 @@ namespace Shoot
     {
         private static Form mainForm { get; set; }
         private static Form currentForm { get; set; }
-        private static Form temporaryForm { get; set; }
+        private static HelpForm helpForm { get; set; }
+        public static DebugForm debugForm { get; set; }
 
         public static Form Init()
         {
             mainForm = new LoginForm();
             mainForm.Show();
             currentForm = mainForm;
-            temporaryForm = null;
+            helpForm = null;
+            debugForm = null;
             return mainForm;
         }
 
@@ -27,8 +29,10 @@ namespace Shoot
         {
             currentForm.FormClosing -= new FormClosingEventHandler(ClosingGameForm);
             currentForm.Close();
-            if (temporaryForm != null)
-                temporaryForm.Close();
+            if (helpForm != null)
+                helpForm.Close();
+            if (debugForm != null)
+                debugForm.Close();
             CreateMissionForm();
         }
 
@@ -44,8 +48,16 @@ namespace Shoot
 
         public static void CloseHelpForm()
         {
-            temporaryForm.Close();
-            temporaryForm = null;
+            if (helpForm != null)
+                helpForm.Close();
+            helpForm = null;
+        }
+
+        public static void CloseDebugForm()
+        {
+            if (debugForm != null)
+                debugForm.Close();
+            debugForm = null;
         }
 
         public static void CreateMissionForm()
@@ -56,7 +68,7 @@ namespace Shoot
             currentForm.FormClosing += new FormClosingEventHandler(CloseMissionForm);
         }
 
-        public static void CreateGameForm(MissionDatabase.Data mission)
+        public static void CreateGameForm(Mission mission)
         {
             currentForm.FormClosing -= new FormClosingEventHandler(CloseMissionForm);
             currentForm.Close();
@@ -67,8 +79,16 @@ namespace Shoot
 
         public static void CreateHelpForm()
         {
-            temporaryForm = new HelpForm();
-            temporaryForm.Show();
+            CloseHelpForm();
+            helpForm = new HelpForm();
+            helpForm.Show();
+        }
+
+        public static void CreateDebugForm(string[] debugOutputs)
+        {
+            CloseDebugForm();
+            debugForm = new DebugForm(debugOutputs);
+            debugForm.Show();
         }
     }
 }

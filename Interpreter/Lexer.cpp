@@ -132,6 +132,11 @@ const void Interpreter::Lexer(const std::string& fileContents, toks& tokens)
             tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
             token = "";
         }
+        else if (token == "DEBUG")
+        {
+            tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
+            token = "";
+        }
         else if (token == "ENDIF")
         {
             tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
