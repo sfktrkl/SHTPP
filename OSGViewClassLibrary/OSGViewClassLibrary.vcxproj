@@ -127,7 +127,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)externals\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>osgd.lib;osgViewerd.lib;osgDBd.lib;osgGAd.lib;osgFXd.lib;osgUtild.lib;OpenThreadsd.lib;osgAnimationd.lib;osgManipulatord.lib;osgParticled.lib;osgPresentationd.lib;osgShadowd.lib;osgSimd.lib;osgTerraind.lib;osgTextd.lib;osgUId.lib;osgVolumed.lib;osgWidgetd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>osg.lib;osgViewer.lib;osgDB.lib;osgGA.lib;osgFX.lib;osgUtil.lib;OpenThreads.lib;osgAnimation.lib;osgManipulator.lib;osgParticle.lib;osgPresentation.lib;osgShadow.lib;osgSim.lib;osgTerrain.lib;osgText.lib;osgUI.lib;osgVolume.lib;osgWidget.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)externals\lib</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
@@ -140,7 +140,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)externals\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>osgd.lib;osgViewerd.lib;osgDBd.lib;osgGAd.lib;osgFXd.lib;osgUtild.lib;OpenThreadsd.lib;osgAnimationd.lib;osgManipulatord.lib;osgParticled.lib;osgPresentationd.lib;osgShadowd.lib;osgSimd.lib;osgTerraind.lib;osgTextd.lib;osgUId.lib;osgVolumed.lib;osgWidgetd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>osg.lib;osgViewer.lib;osgDB.lib;osgGA.lib;osgFX.lib;osgUtil.lib;OpenThreads.lib;osgAnimation.lib;osgManipulator.lib;osgParticle.lib;osgPresentation.lib;osgShadow.lib;osgSim.lib;osgTerrain.lib;osgText.lib;osgUI.lib;osgVolume.lib;osgWidget.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)externals\lib</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
