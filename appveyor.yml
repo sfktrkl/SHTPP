@@ -5,8 +5,6 @@ platform:
 - x64
 build:
   verbosity: minimal
-before_test:
-- ps: .\scripts\beforeTest.ps1
 test_script:
 - ps: .\scripts\test.ps1
 after_test:
