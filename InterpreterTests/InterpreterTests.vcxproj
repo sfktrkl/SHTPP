@@ -76,12 +76,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\$(Configuration)\InterpreterTests\</OutDir>
     <IntDir>..\$(Configuration)\InterpreterTests\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\$(Configuration)\InterpreterTests\</OutDir>
     <IntDir>..\$(Configuration)\InterpreterTests\</IntDir>
   </PropertyGroup>
