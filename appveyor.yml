@@ -10,5 +10,5 @@ test_script:
 after_test:
 - ps: .\scripts\afterTest.ps1
 artifacts:
-- path: shootpp.zip
+- path: Shoot++.zip
   name: Shoot++
