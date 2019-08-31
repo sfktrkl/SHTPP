@@ -21,9 +21,9 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-binaries/
-include/
-lib/
+externals/binaries
+externals/include
+externals/lib
 
 # Visual Studio 2015 cache/options directory
 .vs/
