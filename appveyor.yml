@@ -6,6 +6,8 @@ platform:
 build:
   verbosity: minimal
 test:
+  assemblies:
+    only:
     - 'InterpreterTests\InterpreterTests.dll'
 artifacts:
 - path: shootpp.zip
