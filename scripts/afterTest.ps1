@@ -5,10 +5,10 @@ Write-Host "--------------------------------------------------------------------
 
 $files =
 (
-  "$Env:APPVEYOR_REPO_NAME\.\externals\binaries\*.dll",
-  "$Env:APPVEYOR_REPO_NAME\InterpreterClassLibrary.dll",
-  "$Env:APPVEYOR_REPO_NAME\OSGViewClassLibrary.dll",
-  "$Env:APPVEYOR_REPO_NAME\Shoot++.exe"
+  ".\externals\binaries\*.dll",
+  "$Env:CONFIGURATION\InterpreterClassLibrary.dll",
+  "$Env:CONFIGURATION\OSGViewClassLibrary.dll",
+  "$Env:CONFIGURATION\Shoot++.exe"
 )
 
 7z a -snl shootpp.zip $files | Out-String
