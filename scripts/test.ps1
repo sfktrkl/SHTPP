@@ -2,6 +2,7 @@ Write-Host ""
 Write-Host "Start testing."
 Write-Host "-----------------------------------------------------------------------"
 
+Set-Location ..
 
 $buildPath = "$Env:APPVEYOR_BUILD_FOLDER\$Env:CONFIGURATION"
 
