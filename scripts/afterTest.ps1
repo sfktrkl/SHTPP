@@ -1,3 +1,8 @@
+Write-Host ""
+Write-Host "Zipping artifacts."
+Write-Host "-----------------------------------------------------------------------"
+
+
 $files =
 (
   "$Env:CONFIGURATION\InterpreterClassLibrary.dll",
