@@ -176,13 +176,13 @@ namespace InterpreterTests
             std::vector<std::string> debugOutputs = interpreter->GiveDebugOutputs();
 
             Assert::AreEqual(size_t(7), debugOutputs.size());
-            Assert::AreEqual("DEBUG: 5", debugOutputs[0].c_str());
-            Assert::AreEqual("DEBUG: 15", debugOutputs[1].c_str());
-            Assert::AreEqual("DEBUG: 5", debugOutputs[2].c_str());
-            Assert::AreEqual("DEBUG: GOOD GAME", debugOutputs[3].c_str());
-            Assert::AreEqual("DEBUG: " + std::to_string(randomNumber % 2), debugOutputs[4]);
-            Assert::AreEqual("SHOOT: " + std::to_string(randomNumber % 2), debugOutputs[5]);
-            Assert::AreEqual("DEBUG: HAVE FUN", debugOutputs[6].c_str());
+            Assert::AreEqual("DEBUG: \"NUMBER\": 5", debugOutputs[0].c_str());
+            Assert::AreEqual("DEBUG: \"EXPRESSION\": 7+8 = 15", debugOutputs[1].c_str());
+            Assert::AreEqual("DEBUG: \"VARIABLE\": FIVE = 5", debugOutputs[2].c_str());
+            Assert::AreEqual("DEBUG: \"STRING\": GOOD GAME", debugOutputs[3].c_str());
+            Assert::AreEqual("DEBUG: \"VARIABLE\": RESULT = " + std::to_string(randomNumber % 2), debugOutputs[4]);
+            Assert::AreEqual("SHOOT: \"NUMBER\": " + std::to_string(randomNumber % 2), debugOutputs[5]);
+            Assert::AreEqual("DEBUG: \"STRING\": HAVE FUN", debugOutputs[6].c_str());
 
             Begin(false);
 
@@ -194,12 +194,12 @@ namespace InterpreterTests
             debugOutputs = interpreter->GiveDebugOutputs();
 
             Assert::AreEqual(size_t(6), debugOutputs.size());
-            Assert::AreEqual("DEBUG: 5", debugOutputs[0].c_str());
-            Assert::AreEqual("DEBUG: 15", debugOutputs[1].c_str());
-            Assert::AreEqual("DEBUG: 5", debugOutputs[2].c_str());
-            Assert::AreEqual("DEBUG: GOOD GAME", debugOutputs[3].c_str());
-            Assert::AreEqual("DEBUG: " + std::to_string(randomNumber % 2), debugOutputs[4]);
-            Assert::AreEqual("DEBUG: HAVE FUN", debugOutputs[5].c_str());
+            Assert::AreEqual("DEBUG: \"NUMBER\": 5", debugOutputs[0].c_str());
+            Assert::AreEqual("DEBUG: \"EXPRESSION\": 7+8 = 15", debugOutputs[1].c_str());
+            Assert::AreEqual("DEBUG: \"VARIABLE\": FIVE = 5", debugOutputs[2].c_str());
+            Assert::AreEqual("DEBUG: \"STRING\": GOOD GAME", debugOutputs[3].c_str());
+            Assert::AreEqual("DEBUG: \"VARIABLE\": RESULT = " + std::to_string(randomNumber % 2), debugOutputs[4]);
+            Assert::AreEqual("DEBUG: \"STRING\": HAVE FUN", debugOutputs[5].c_str());
         }
 
 	};

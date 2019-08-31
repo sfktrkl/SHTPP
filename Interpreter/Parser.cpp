@@ -15,13 +15,13 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                 {
                     AddOutput(tokens[i + 1].second);
                     if (isDebugShoot)
-                        AddDebugOutput("STRING: " + tokens[i + 1].second, false, true);
+                        AddDebugOutput("\"STRING\": " + tokens[i + 1].second, false, true);
                 }
                 else if (tokens[i + 1].first == TokenType::NUMBER)
                 {
                     AddOutput(tokens[i + 1].second);
                     if (isDebugShoot)
-                        AddDebugOutput("NUMBER: " + tokens[i + 1].second, false, true);
+                        AddDebugOutput("\"NUMBER\": " + tokens[i + 1].second, false, true);
                 }
 
                 else if (tokens[i + 1].first == TokenType::EXPRESSION)
@@ -31,7 +31,7 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                         std::string result = EvaluateExpression(tokens[i + 1].second, variables);
                         AddOutput(result);
                         if (isDebugShoot)
-                            AddDebugOutput("\"EXPRESSION\": " + tokens[i + 1].second + ": " + result, false, true);
+                            AddDebugOutput("\"EXPRESSION\": " + tokens[i + 1].second + " = " + result, false, true);
                     }
                     catch (const char* result)
                     {
@@ -45,7 +45,7 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                     {
                         AddOutput(variables[tokens[i + 1].second].getValue());
                         if (isDebugShoot)
-                            AddDebugOutput("\"VARIABLE\": " + tokens[i + 1].second + ": " + variables[tokens[i + 1].second].getValue(), false, true);
+                            AddDebugOutput("\"VARIABLE\": " + tokens[i + 1].second + " = " + variables[tokens[i + 1].second].getValue(), false, true);
                     }
                     else
                     {
@@ -79,7 +79,7 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                     try
                     {
                         std::string result = EvaluateExpression(tokens[i + 1].second, variables);
-                        AddDebugOutput("\"EXPRESSION\": " + tokens[i + 1].second + ": " + result);
+                        AddDebugOutput("\"EXPRESSION\": " + tokens[i + 1].second + " = " + result);
                     }
                     catch (const char* result)
                     {
@@ -90,7 +90,7 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                 else if (tokens[i + 1].first == TokenType::VARIABLE)
                 {
                     if (checkKey(variables, tokens[i + 1].second))
-                        AddDebugOutput("\"VARIABLE\": " + tokens[i + 1].second + ": " + variables[tokens[i + 1].second].getValue());
+                        AddDebugOutput("\"VARIABLE\": " + tokens[i + 1].second + " = " + variables[tokens[i + 1].second].getValue());
                     else
                     {
                         AddDebugOutput("SOZ DIZIMI HATASI : DEGISKEN BULUNAMADI", true);

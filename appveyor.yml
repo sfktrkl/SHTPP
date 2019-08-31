@@ -1,0 +1,16 @@
+version: 0.0.{build}
+image: Visual Studio 2017
+configuration: Release
+platform:
+- x64
+before_build:
+- ps: .\scripts\beforeBuild.ps1
+build:
+  verbosity: minimal
+test_script:
+- ps: .\scripts\test.ps1
+after_test:
+- ps: .\scripts\afterTest.ps1
+artifacts:
+- path: Shoot++.zip
+  name: Shoot++
