@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Security.Cryptography;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Shoot

@@ -27,8 +27,8 @@ const void Interpreter::Conditioner(size_t i, toks& tokens, iftoks& ifTokens, va
 
             tokens.erase(tokens.begin() + i);
         }
-        else if (conditionStarted 
-            && (tokens[i].first == TokenType::EXPRESSION || tokens[i].first == TokenType::NUMBER || tokens[i].first == TokenType::VARIABLE) 
+        else if (conditionStarted
+            && (tokens[i].first == TokenType::EXPRESSION || tokens[i].first == TokenType::NUMBER || tokens[i].first == TokenType::VARIABLE)
             && !isIFBody && !isELSEBody)
         {
             std::string first, second;
@@ -75,7 +75,7 @@ const void Interpreter::Conditioner(size_t i, toks& tokens, iftoks& ifTokens, va
 
             tokens.erase(tokens.begin() + i);
         }
-        else if (!conditionStarted && tokens[i].first == TokenType::KEYWORD && tokens[i].second == "ENDIF" 
+        else if (!conditionStarted && tokens[i].first == TokenType::KEYWORD && tokens[i].second == "ENDIF"
             && (isIFBody || isELSEBody) && ifSeen == 0)
         {
             conditionNumber++;

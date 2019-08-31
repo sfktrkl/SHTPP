@@ -55,4 +55,3 @@ void OSGViewClassWrapper::SetSuccess(bool success)
 {
     osgView->SetSuccess(success);
 }
-

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
 
 namespace Shoot
 {
@@ -63,7 +62,7 @@ namespace Shoot
             //Mission number
             1,
             // Mission Name
-            "Tutorial 1", 
+            "Tutorial 1",
             // Mission Note
             "Aim of this tutorial is to learn how to use the comment lines, and returning the calculated values. " +
             "Comment lines are starting with # and ends with the line endings. " +
@@ -216,7 +215,7 @@ namespace Shoot
                 "IF keyword is used for evaluating the test expression. " +
                 "After the test expression THEN keyword should be used to jump to body. " +
                 "Body should also end with the ENDIF keyword.\n" +
-                "Inputs: Single integer number. \n" + 
+                "Inputs: Single integer number. \n" +
                 "Output: Shoot 1 for odd, 0 for even number.",
                 // Mission default code
                 "#Use IF, THEN and ENDIF keywords.\n" +
@@ -227,7 +226,7 @@ namespace Shoot
                 "INPUT $NUMBER\n\n" +
                 "IF $NUMBER % 2 == 0 THEN\n" +
                 "   SHOOT 0\n" +
-                "ELSE\n" + 
+                "ELSE\n" +
                 "   SHOOT 1\n" +
                 "ENDIF\n\n",
                 // Mission inputs

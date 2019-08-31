@@ -46,5 +46,4 @@ private:
 
     osgText::Text3D* Success();
     bool success = false;
-
 };

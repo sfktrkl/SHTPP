@@ -255,4 +255,3 @@ osg::Geode* OSGView::LoadTutorial4()
 
     return geode.release();
 }
-

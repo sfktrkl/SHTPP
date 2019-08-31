@@ -117,6 +117,5 @@ namespace Shoot
             this.Text = text;
             Cursor.Current = Cursors.Default;
         }
-
     }
 }

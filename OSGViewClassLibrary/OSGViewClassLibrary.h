@@ -5,8 +5,8 @@
 using namespace System;
 
 namespace OSGViewClassLibrary {
-	public ref class OSGViewClassWrapper
-	{
+    public ref class OSGViewClassWrapper
+    {
     public:
         OSGViewClassWrapper();
 
@@ -21,5 +21,5 @@ namespace OSGViewClassLibrary {
         void SetSuccess(bool success);
     private:
         OSGView* osgView; // an instance of class in C++
-	};
+    };
 }

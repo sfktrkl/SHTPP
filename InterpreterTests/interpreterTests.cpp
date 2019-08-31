@@ -58,7 +58,7 @@ namespace InterpreterTests
             filePath = "..\\TestFiles\\INPUT.sfk";
 
             std::ostringstream ss;
-            ss  << "INPUT $MYVARIABLE\n" <<
+            ss << "INPUT $MYVARIABLE\n" <<
                 "SHOOT 3 + $MYVARIABLE";
             fileContents = ss.str();
 
@@ -105,7 +105,7 @@ namespace InterpreterTests
             filePath = "..\\TestFiles\\NESTEDIF.sfk";
 
             std::ostringstream ss;
-            ss  << "INPUT $NUMBER\n" <<
+            ss << "INPUT $NUMBER\n" <<
                 "$RESULT = $NUMBER % 2\n" <<
                 "IF $RESULT == 0 THEN\n" <<
                 "   SHOOT 0\n" <<
@@ -201,6 +201,5 @@ namespace InterpreterTests
             Assert::AreEqual("DEBUG: \"VARIABLE\": RESULT = " + std::to_string(randomNumber % 2), debugOutputs[4]);
             Assert::AreEqual("DEBUG: \"STRING\": HAVE FUN", debugOutputs[5].c_str());
         }
-
-	};
+    };
 }

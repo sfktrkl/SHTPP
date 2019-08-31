@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using InterpreterClassLibrary;
+﻿using InterpreterClassLibrary;
 using OSGViewClassLibrary;
+using System;
+using System.Windows.Forms;
 
 namespace Shoot
 {
@@ -10,7 +10,7 @@ namespace Shoot
         private OSGViewClassWrapper viewer = new OSGViewClassWrapper();
         private InterpreterClassWrapper interpreter;
         private int[] solutions;
-        string[] debugOutputs;
+        private string[] debugOutputs;
         private Mission mission;
         public static bool isDebugShoot = true;
 

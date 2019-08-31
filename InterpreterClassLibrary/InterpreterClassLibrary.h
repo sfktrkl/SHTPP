@@ -7,8 +7,8 @@
 using namespace System;
 
 namespace InterpreterClassLibrary {
-	public ref class InterpreterClassWrapper
-	{
+    public ref class InterpreterClassWrapper
+    {
     public:
         InterpreterClassWrapper(const char* file);
         void Execute();
@@ -19,5 +19,5 @@ namespace InterpreterClassLibrary {
         void SetDebugMode(bool isDebugShoot);
     private:
         Interpreter* interpreter;
-	};
+    };
 }

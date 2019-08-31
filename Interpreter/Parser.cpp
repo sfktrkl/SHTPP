@@ -220,5 +220,4 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
         }
         i += 1;
     }
-
 }
