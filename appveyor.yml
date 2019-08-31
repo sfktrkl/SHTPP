@@ -5,3 +5,6 @@ platform:
 - x64
 build:
   verbosity: minimal
+artifacts:
+- path: shootpp.7z
+  name: Shoot++
