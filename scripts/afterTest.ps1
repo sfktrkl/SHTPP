@@ -11,4 +11,4 @@ Copy-Item -Path Release\InterpreterClassLibrary.dll -Destination Shoot++
 Copy-Item -Path Release\OSGViewClassLibrary.dll -Destination Shoot++
 Copy-Item -Path Release\Shoot++.exe -Destination Shoot++
 
-7z a -snl Shoot++.zip $files Shoot++
+7z a -snl Shoot++.zip Shoot++
