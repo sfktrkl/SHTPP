@@ -5,6 +5,11 @@ platform:
 - x64
 build:
   verbosity: minimal
+test:
+  # only assemblies to test
+  assemblies:
+    only:
+      - 'Release\InterpreterTests.dll'
 artifacts:
 - path: shootpp.7z
   name: Shoot++
