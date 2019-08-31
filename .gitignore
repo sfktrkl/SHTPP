@@ -21,7 +21,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-/externals/binaries/
+/externals/binariesDebug/
+/externals/binariesRelease/
 /externals/include/
 /externals/lib/
 
