@@ -2,4 +2,5 @@ Write-Host ""
 Write-Host "Extract externals."
 Write-Host "-----------------------------------------------------------------------"
 
-7z e -aoa externals\externals.7z
+Set-Location ..\externals
+7z x -aoa externals.7z
