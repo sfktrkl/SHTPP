@@ -2,7 +2,9 @@ Write-Host ""
 Write-Host "Extract externals."
 Write-Host "-----------------------------------------------------------------------"
 
-Get-Location
+Test-Path externals\binaries
+Test-Path externals\include
+Test-Path externals\lib
 
 if (Test-Path externals\binaries) { Remove-Item externals\binaries -Recurse }
 if (Test-Path externals\include) { Remove-Item externals\include -Recurse }
