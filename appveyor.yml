@@ -7,8 +7,8 @@ build:
   verbosity: minimal
 test_script:
 - ps: .\scripts\test.ps1
-on_success:
-- ps: .\scripts\onSuccess.ps1
+after_test:
+- ps: .\scripts\afterTest.ps1
 artifacts:
 - path: shootpp.zip
   name: Shoot++
