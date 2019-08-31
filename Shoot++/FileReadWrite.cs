@@ -33,7 +33,7 @@ namespace Shoot
             return condition;
         }
 
-        public static List<string> ReadLoginFile(string id, string pw)
+        public static List<string> ReadLoginFile()
         {
             List<string> read = new List<string>();
             // Open the stream and read it back.
@@ -49,7 +49,7 @@ namespace Shoot
             return read;
         }
 
-        public static void WriteLoginFile(List<string> inputs, string id, string pw)
+        public static void WriteLoginFile(List<string> inputs)
         {
             // Create the file.
             Directory.CreateDirectory(userDirectory);
@@ -61,6 +61,28 @@ namespace Shoot
             // Add some information to the file.
             foreach (string input in inputs)
                 sw.WriteLine(HashGenerator.GetHash(input));
+
+            sw.Close();
+
+            FileEncrypterDecrypter.FileEncrypt(sw.ToString(), userFile);
+        }
+
+        public static void AddToLoginFile(string input)
+        {
+            List<string> read = ReadLoginFile();
+
+            // Create the file.
+            Directory.CreateDirectory(userDirectory);
+            FileStream fs = File.Create(userFile);
+            fs.Close();
+
+            StringWriter sw = new StringWriter();
+
+            // Add some information to the file.
+            foreach (string line in read)
+                sw.WriteLine(line);
+
+            sw.WriteLine(HashGenerator.GetHash(input));
 
             sw.Close();
 

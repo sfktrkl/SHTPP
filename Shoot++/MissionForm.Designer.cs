@@ -81,7 +81,7 @@
             this.tutorial6.Name = "tutorial6";
             this.tutorial6.Size = new System.Drawing.Size(136, 24);
             this.tutorial6.TabIndex = 9;
-            this.tutorial6.Tag = "t6";
+            this.tutorial6.Tag = "6";
             this.tutorial6.Text = "- DEBUGGING";
             // 
             // tutorial5
@@ -92,7 +92,7 @@
             this.tutorial5.Name = "tutorial5";
             this.tutorial5.Size = new System.Drawing.Size(146, 24);
             this.tutorial5.TabIndex = 8;
-            this.tutorial5.Tag = "t5";
+            this.tutorial5.Tag = "5";
             this.tutorial5.Text = "- USING LOOPS";
             // 
             // tutorial4
@@ -103,7 +103,7 @@
             this.tutorial4.Name = "tutorial4";
             this.tutorial4.Size = new System.Drawing.Size(159, 24);
             this.tutorial4.TabIndex = 7;
-            this.tutorial4.Tag = "t4";
+            this.tutorial4.Tag = "4";
             this.tutorial4.Text = "- Using IF-ELSE";
             // 
             // tutorial3
@@ -114,7 +114,7 @@
             this.tutorial3.Name = "tutorial3";
             this.tutorial3.Size = new System.Drawing.Size(170, 24);
             this.tutorial3.TabIndex = 6;
-            this.tutorial3.Tag = "t3";
+            this.tutorial3.Tag = "3";
             this.tutorial3.Text = "- TAKING INPUTS";
             // 
             // tutorial2
@@ -125,7 +125,7 @@
             this.tutorial2.Name = "tutorial2";
             this.tutorial2.Size = new System.Drawing.Size(199, 24);
             this.tutorial2.TabIndex = 5;
-            this.tutorial2.Tag = "t2";
+            this.tutorial2.Tag = "2";
             this.tutorial2.Text = "- Using Variables";
             // 
             // tutorial1
@@ -136,7 +136,7 @@
             this.tutorial1.Name = "tutorial1";
             this.tutorial1.Size = new System.Drawing.Size(223, 24);
             this.tutorial1.TabIndex = 4;
-            this.tutorial1.Tag = "t1";
+            this.tutorial1.Tag = "1";
             this.tutorial1.Text = "- Returning Results";
             // 
             // mission1
@@ -147,7 +147,7 @@
             this.mission1.Name = "mission1";
             this.mission1.Size = new System.Drawing.Size(117, 24);
             this.mission1.TabIndex = 10;
-            this.mission1.Tag = "m1";
+            this.mission1.Tag = "10";
             this.mission1.Text = "- Mission 1";
             // 
             // mission2
@@ -158,8 +158,8 @@
             this.mission2.Name = "mission2";
             this.mission2.Size = new System.Drawing.Size(117, 24);
             this.mission2.TabIndex = 11;
-            this.mission2.Tag = "m2";
-            this.mission2.Text = "- MIssion 2";
+            this.mission2.Tag = "11";
+            this.mission2.Text = "- Mission 2";
             // 
             // quit
             // 

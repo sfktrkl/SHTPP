@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
-using InterpreterClassLibrary;
-
 
 namespace Shoot
 {
@@ -40,7 +39,7 @@ namespace Shoot
                     "No User Account", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    FileReadWrite.WriteLoginFile(new List<string> { id, pw, "0" }, id, pw);
+                    FileReadWrite.WriteLoginFile(new List<string> { id, pw, "0" });
                 }
             }
             else if (condition == FileReadWrite.FileCondition.FileNotExist)
@@ -51,15 +50,16 @@ namespace Shoot
                                     "No User File", MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Exclamation) == DialogResult.Yes)
                 {
-                    FileReadWrite.WriteLoginFile(new List<string> { id, pw, "0" }, id, pw);
+                    FileReadWrite.WriteLoginFile(new List<string> { id, pw, "0" });
                 }
             }
             else if (condition == FileReadWrite.FileCondition.FileExist)
             {
-                List<string> read = FileReadWrite.ReadLoginFile(id, pw);
+                List<string> read = FileReadWrite.ReadLoginFile();
 
                 if (HashGenerator.VerifyHash(read[0], id) && HashGenerator.VerifyHash(read[1], pw))
                 {
+                    MissionForm.enabledMissions = HashGenerator.TakeValues(read.GetRange(2, read.Count - 2));
                     UiManager.CreateMissionForm();
                     this.idBox.Text = "";
                     this.pwBox.Text = "";

@@ -20,8 +20,8 @@ namespace Shoot
 
             this.mission = mission;
 
-            this.title.Text = mission.data.name;
-            this.Text = mission.data.name;
+            RefreshTitle();
+
             this.missionNote.Text = mission.data.note;
 
             string content = FileReadWrite.ReadFile(this.Text.ToString());
@@ -36,6 +36,20 @@ namespace Shoot
             GiveInputsToViewer(mission.data.inputs);
 
             renderArea.Paint += new PaintEventHandler(Painter);
+        }
+
+        private void RefreshTitle()
+        {
+            this.title.Tag = mission.data.number.ToString();
+            if (MissionForm.enabledMissions.Contains(mission.data.number.ToString()))
+                this.title.Text = mission.data.name + " - COMPLETED";
+            else
+                this.title.Text = mission.data.name;
+
+            if (MissionForm.enabledMissions.Contains(mission.data.number.ToString()))
+                this.Text = mission.data.name + " - COMPLETED";
+            else
+                this.Text = mission.data.name;
         }
 
         private void RefreshMission()
@@ -105,7 +119,7 @@ namespace Shoot
             RefreshMission();
 
             string content = this.codeText.Text.ToUpper();
-            string file = FileReadWrite.WriteFile(content, this.Text.ToString());
+            string file = FileReadWrite.WriteFile(content, mission.data.name);
             CallInterpreter(file, mission.data.inputs);
 
             int[] outputs = interpreter.TakeOutputs();
@@ -130,6 +144,12 @@ namespace Shoot
             viewer.SetSuccess(success);
 
             viewer.Refresh();
+
+            if (success)
+            {
+                MissionForm.SearchInEnabledMissions(mission.data.number.ToString());
+                RefreshTitle();
+            }
         }
 
         private void save_Click(object sender, System.EventArgs e)

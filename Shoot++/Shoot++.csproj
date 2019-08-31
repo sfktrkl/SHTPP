@@ -97,11 +97,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="InterpreterClassLibrary">
-	  <HintPath Condition="'$(Configuration)'=='Debug'">..\Debug\InterpreterCLI\InterpreterClassLibrary.dll</HintPath>
+      <HintPath Condition="'$(Configuration)'=='Debug'">..\Debug\InterpreterCLI\InterpreterClassLibrary.dll</HintPath>
       <HintPath Condition="'$(Configuration)'=='Release'">..\Release\InterpreterCLI\InterpreterClassLibrary.dll</HintPath>
     </Reference>
     <Reference Include="OSGViewClassLibrary">
-	  <HintPath Condition="'$(Configuration)'=='Debug'">..\Debug\OSGViewCLI\OSGViewClassLibrary.dll</HintPath>
+      <HintPath Condition="'$(Configuration)'=='Debug'">..\Debug\OSGViewCLI\OSGViewClassLibrary.dll</HintPath>
       <HintPath Condition="'$(Configuration)'=='Release'">..\Release\OSGViewCLI\OSGViewClassLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -117,7 +117,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClickableLabel.cs">
+    <Compile Include="Labels.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DebugForm.cs">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Shoot
@@ -38,6 +39,30 @@ namespace Shoot
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
 
             return comparer.Compare(input, hash) == 0;
+        }
+
+        public static List<string> TakeValues(List<string> input)
+        {
+            List<string> values = new List<string>();
+
+            // Create a StringComparer an compare the hashes.
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+            for (int i = 0; i < input.Count; i++)
+            {
+                for (int j = 0; j < 20; j++)
+                {
+                    string hash = GetHash(j.ToString());
+
+                    if (comparer.Compare(input[i], hash) == 0)
+                    {
+                        values.Add(j.ToString());
+                        break;
+                    }
+                }
+            }
+
+            return values;
         }
     }
 }

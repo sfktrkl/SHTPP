@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shoot
@@ -17,7 +10,7 @@ namespace Shoot
         public DebugForm(string[] debugOutputs)
         {
             InitializeComponent();
-            this.debugInfo.RefreshColor();
+            this.debugInfo.RefreshText();
             this.debugOutputs = debugOutputs;
             RefreshDebugText();
         }
@@ -52,7 +45,7 @@ namespace Shoot
         private void debugInfo_Click(object sender, EventArgs e)
         {
             GameForm.isDebugShoot = !GameForm.isDebugShoot;
-            this.debugInfo.RefreshColor();
+            this.debugInfo.RefreshText();
             RefreshDebugText();
         }
     }

@@ -31,15 +31,15 @@ namespace Shoot
 
         public static Data GetMission(string mission)
         {
-            if (mission == "t1")
+            if (mission == "1")
                 return Tutorial1();
-            else if (mission == "t2")
+            else if (mission == "2")
                 return Tutorial2();
-            else if (mission == "t3")
+            else if (mission == "3")
                 return Tutorial3();
-            else if (mission == "t4")
+            else if (mission == "4")
                 return Tutorial4();
-            else if (mission == "t6")
+            else if (mission == "6")
                 return Tutorial6();
             else
                 return new Data();

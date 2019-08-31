@@ -31,7 +31,7 @@
             this.OSGPanel = new System.Windows.Forms.Panel();
             this.renderArea = new System.Windows.Forms.PictureBox();
             this.codeText = new System.Windows.Forms.RichTextBox();
-            this.title = new System.Windows.Forms.Label();
+            this.title = new Shoot.ColoredLabel();
             this.missionNote = new System.Windows.Forms.Label();
             this.back = new Shoot.ClickableLabel();
             this.save = new Shoot.ClickableLabel();
@@ -73,14 +73,14 @@
             // 
             // title
             // 
-            this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Algerian", 24F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(600, 10);
+            this.title.Location = new System.Drawing.Point(40, 10);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(249, 35);
+            this.title.Size = new System.Drawing.Size(1360, 35);
             this.title.TabIndex = 2;
             this.title.Text = "Mission Name:";
+            this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // missionNote
             // 
@@ -181,7 +181,7 @@
 
         private System.Windows.Forms.Panel OSGPanel;
         private System.Windows.Forms.RichTextBox codeText;
-        private System.Windows.Forms.Label title;
+        private ColoredLabel title;
         private System.Windows.Forms.Label missionNote;
         private ClickableLabel run;
         private ClickableLabel save;

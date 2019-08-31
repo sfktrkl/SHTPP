@@ -62,9 +62,9 @@
             this.debugInfo.ForeColor = System.Drawing.Color.Green;
             this.debugInfo.Location = new System.Drawing.Point(12, 506);
             this.debugInfo.Name = "debugInfo";
-            this.debugInfo.Size = new System.Drawing.Size(237, 26);
+            this.debugInfo.Size = new System.Drawing.Size(239, 26);
             this.debugInfo.TabIndex = 10;
-            this.debugInfo.Text = "DEBUG SHOOT = ON";
+            this.debugInfo.Text = "DEBUG SHOOT = ???";
             this.debugInfo.Click += new System.EventHandler(this.debugInfo_Click);
             // 
             // title
