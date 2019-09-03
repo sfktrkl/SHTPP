@@ -82,7 +82,7 @@
             this.tutorial6.Size = new System.Drawing.Size(136, 24);
             this.tutorial6.TabIndex = 9;
             this.tutorial6.Tag = "6";
-            this.tutorial6.Text = "- DEBUGGING";
+            this.tutorial6.Text = "- Debugging";
             // 
             // tutorial5
             // 
@@ -93,8 +93,8 @@
             this.tutorial5.Size = new System.Drawing.Size(146, 24);
             this.tutorial5.TabIndex = 8;
             this.tutorial5.Tag = "5";
-            this.tutorial5.Text = "- USING LOOPS";
-            // 
+            this.tutorial5.Text = "- Using LOOP";
+            //
             // tutorial4
             // 
             this.tutorial4.AutoSize = true;
@@ -115,7 +115,7 @@
             this.tutorial3.Size = new System.Drawing.Size(170, 24);
             this.tutorial3.TabIndex = 6;
             this.tutorial3.Tag = "3";
-            this.tutorial3.Text = "- TAKING INPUTS";
+            this.tutorial3.Text = "- Taking Inputs";
             // 
             // tutorial2
             // 

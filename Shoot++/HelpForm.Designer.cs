@@ -75,24 +75,24 @@
             // 
             // title
             // 
-            this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Algerian", 24F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(330, 9);
+            this.title.Location = new System.Drawing.Point(85, 9);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(96, 35);
+            this.title.Size = new System.Drawing.Size(635, 35);
             this.title.TabIndex = 9;
-            this.title.Text = "HELP";
+            this.title.Text = "Help";
+            this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // keywords
             // 
-            this.keywords.AutoSize = true;
             this.keywords.Font = new System.Drawing.Font("Algerian", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.keywords.Location = new System.Drawing.Point(60, 60);
             this.keywords.Name = "keywords";
-            this.keywords.Size = new System.Drawing.Size(142, 26);
+            this.keywords.Size = new System.Drawing.Size(300, 26);
             this.keywords.TabIndex = 10;
-            this.keywords.Text = "keywords";
+            this.keywords.Text = "Keywords";
+            this.keywords.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // input
             // 
@@ -102,7 +102,7 @@
             this.input.Name = "input";
             this.input.Size = new System.Drawing.Size(76, 26);
             this.input.TabIndex = 11;
-            this.input.Text = "input";
+            this.input.Text = "INPUT";
             // 
             // shoot
             // 
@@ -112,7 +112,7 @@
             this.shoot.Name = "shoot";
             this.shoot.Size = new System.Drawing.Size(84, 26);
             this.shoot.TabIndex = 12;
-            this.shoot.Text = "shoot";
+            this.shoot.Text = "SHOOT";
             // 
             // ifthen
             // 
@@ -122,7 +122,7 @@
             this.ifthen.Name = "ifthen";
             this.ifthen.Size = new System.Drawing.Size(120, 26);
             this.ifthen.TabIndex = 13;
-            this.ifthen.Text = "if ... then";
+            this.ifthen.Text = "IF ... THEN";
             // 
             // ifelse
             // 
@@ -132,7 +132,7 @@
             this.ifelse.Name = "ifelse";
             this.ifelse.Size = new System.Drawing.Size(68, 26);
             this.ifelse.TabIndex = 14;
-            this.ifelse.Text = "else";
+            this.ifelse.Text = "ELSE";
             // 
             // endif
             // 
@@ -142,7 +142,7 @@
             this.endif.Name = "endif";
             this.endif.Size = new System.Drawing.Size(75, 26);
             this.endif.TabIndex = 15;
-            this.endif.Text = "endif";
+            this.endif.Text = "ENDIF";
             // 
             // loopthen
             // 
@@ -152,7 +152,7 @@
             this.loopthen.Name = "loopthen";
             this.loopthen.Size = new System.Drawing.Size(157, 26);
             this.loopthen.TabIndex = 16;
-            this.loopthen.Text = "loop ... then";
+            this.loopthen.Text = "LOOP ... THEN";
             // 
             // endloop
             // 
@@ -162,27 +162,27 @@
             this.endloop.Name = "endloop";
             this.endloop.Size = new System.Drawing.Size(112, 26);
             this.endloop.TabIndex = 17;
-            this.endloop.Text = "endloop";
+            this.endloop.Text = "ENDLOOP";
             // 
             // arithmetic
             // 
-            this.arithmetic.AutoSize = true;
             this.arithmetic.Font = new System.Drawing.Font("Algerian", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.arithmetic.Location = new System.Drawing.Point(400, 60);
             this.arithmetic.Name = "arithmetic";
-            this.arithmetic.Size = new System.Drawing.Size(309, 26);
+            this.arithmetic.Size = new System.Drawing.Size(320, 26);
             this.arithmetic.TabIndex = 18;
             this.arithmetic.Text = "Arithmetic Operators";
+            this.arithmetic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // precedence
             // 
-            this.precedence.AutoSize = true;
             this.precedence.Font = new System.Drawing.Font("Algerian", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.precedence.Location = new System.Drawing.Point(440, 90);
+            this.precedence.Location = new System.Drawing.Point(400, 86);
             this.precedence.Name = "precedence";
-            this.precedence.Size = new System.Drawing.Size(233, 26);
+            this.precedence.Size = new System.Drawing.Size(320, 26);
             this.precedence.TabIndex = 19;
-            this.precedence.Text = "with precedence";
+            this.precedence.Text = "With Precedence";
+            this.precedence.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // multiplication
             // 
@@ -190,9 +190,9 @@
             this.multiplication.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.multiplication.Location = new System.Drawing.Point(450, 130);
             this.multiplication.Name = "multiplication";
-            this.multiplication.Size = new System.Drawing.Size(221, 26);
+            this.multiplication.Size = new System.Drawing.Size(215, 26);
             this.multiplication.TabIndex = 20;
-            this.multiplication.Text = "*   multiplication";
+            this.multiplication.Text = "*  Multiplication";
             // 
             // division
             // 
@@ -202,7 +202,7 @@
             this.division.Name = "division";
             this.division.Size = new System.Drawing.Size(128, 26);
             this.division.TabIndex = 21;
-            this.division.Text = "/  division";
+            this.division.Text = "/  Division";
             // 
             // modulus
             // 
@@ -212,7 +212,7 @@
             this.modulus.Name = "modulus";
             this.modulus.Size = new System.Drawing.Size(142, 26);
             this.modulus.TabIndex = 22;
-            this.modulus.Text = "%  modulus";
+            this.modulus.Text = "%  Modulus";
             // 
             // addition
             // 
@@ -222,7 +222,7 @@
             this.addition.Name = "addition";
             this.addition.Size = new System.Drawing.Size(141, 26);
             this.addition.TabIndex = 23;
-            this.addition.Text = "+  addition";
+            this.addition.Text = "+  Addition";
             // 
             // subtraction
             // 
@@ -230,19 +230,19 @@
             this.subtraction.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subtraction.Location = new System.Drawing.Point(450, 250);
             this.subtraction.Name = "subtraction";
-            this.subtraction.Size = new System.Drawing.Size(193, 26);
+            this.subtraction.Size = new System.Drawing.Size(187, 26);
             this.subtraction.TabIndex = 24;
-            this.subtraction.Text = "-   subtraction";
+            this.subtraction.Text = "-  Subtraction";
             // 
             // assignment
             // 
-            this.assignment.AutoSize = true;
             this.assignment.Font = new System.Drawing.Font("Algerian", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.assignment.Location = new System.Drawing.Point(400, 320);
             this.assignment.Name = "assignment";
-            this.assignment.Size = new System.Drawing.Size(314, 26);
+            this.assignment.Size = new System.Drawing.Size(320, 26);
             this.assignment.TabIndex = 25;
             this.assignment.Text = "Assignment Operators";
+            this.assignment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // equals
             // 
@@ -250,19 +250,19 @@
             this.equals.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.equals.Location = new System.Drawing.Point(450, 360);
             this.equals.Name = "equals";
-            this.equals.Size = new System.Drawing.Size(121, 26);
+            this.equals.Size = new System.Drawing.Size(127, 26);
             this.equals.TabIndex = 26;
-            this.equals.Text = "= equals";
+            this.equals.Text = "=  Equals";
             // 
             // comparison
             // 
-            this.comparison.AutoSize = true;
             this.comparison.Font = new System.Drawing.Font("Algerian", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comparison.Location = new System.Drawing.Point(400, 420);
             this.comparison.Name = "comparison";
-            this.comparison.Size = new System.Drawing.Size(315, 26);
+            this.comparison.Size = new System.Drawing.Size(320, 26);
             this.comparison.TabIndex = 27;
             this.comparison.Text = "Comparison Operators";
+            this.comparison.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // equalTo
             // 
@@ -272,7 +272,7 @@
             this.equalTo.Name = "equalTo";
             this.equalTo.Size = new System.Drawing.Size(157, 26);
             this.equalTo.TabIndex = 28;
-            this.equalTo.Text = "== equal to";
+            this.equalTo.Text = "== Equal To";
             // 
             // variableName
             // 
@@ -282,17 +282,17 @@
             this.variableName.Name = "variableName";
             this.variableName.Size = new System.Drawing.Size(208, 26);
             this.variableName.TabIndex = 29;
-            this.variableName.Text = "$variablename";
+            this.variableName.Text = "$VARIABLENAME";
             // 
             // variable
             // 
-            this.variable.AutoSize = true;
             this.variable.Font = new System.Drawing.Font("Algerian", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.variable.Location = new System.Drawing.Point(60, 490);
             this.variable.Name = "variable";
-            this.variable.Size = new System.Drawing.Size(265, 26);
+            this.variable.Size = new System.Drawing.Size(320, 26);
             this.variable.TabIndex = 30;
-            this.variable.Text = "Creating variable";
+            this.variable.Text = "Creating Variable";
+            this.variable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // seperator1
             // 
@@ -350,7 +350,7 @@
             this.debug.Name = "debug";
             this.debug.Size = new System.Drawing.Size(88, 26);
             this.debug.TabIndex = 37;
-            this.debug.Text = "debug";
+            this.debug.Text = "DEBUG";
             // 
             // label6
             // 

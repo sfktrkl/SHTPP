@@ -94,9 +94,9 @@ namespace Shoot
         public void RefreshText()
         {
             if (GameForm.isDebugShoot)
-                text = "DEBUG SHOOT = ON";
+                text = "SHOOT Debug = ON";
             else
-                text = "DEBUG SHOOT = OFF";
+                text = "SHOOT Debug = OFF";
 
             this.Text = text;
         }

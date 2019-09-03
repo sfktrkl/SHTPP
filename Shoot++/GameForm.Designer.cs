@@ -117,13 +117,13 @@
             // 
             // run
             // 
-            this.run.AutoSize = true;
             this.run.Font = new System.Drawing.Font("Algerian", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.run.Location = new System.Drawing.Point(260, 775);
+            this.run.Location = new System.Drawing.Point(40, 775);
             this.run.Name = "run";
-            this.run.Size = new System.Drawing.Size(84, 39);
+            this.run.Size = new System.Drawing.Size(520, 39);
             this.run.TabIndex = 5;
             this.run.Text = "Run";
+            this.run.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.run.Click += new System.EventHandler(this.run_Click);
             // 
             // help
@@ -134,7 +134,7 @@
             this.help.Name = "help";
             this.help.Size = new System.Drawing.Size(96, 35);
             this.help.TabIndex = 8;
-            this.help.Text = "HELP";
+            this.help.Text = "Help";
             this.help.Click += new System.EventHandler(this.help_Click);
             // 
             // debug
@@ -145,7 +145,7 @@
             this.debug.Name = "debug";
             this.debug.Size = new System.Drawing.Size(93, 26);
             this.debug.TabIndex = 9;
-            this.debug.Text = "debug";
+            this.debug.Text = "Debug";
             this.debug.Click += new System.EventHandler(this.debug_Click);
             // 
             // GameForm

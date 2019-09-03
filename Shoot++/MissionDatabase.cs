@@ -168,10 +168,10 @@ namespace Shoot
                 // Mission default code
                 "#Use input keyword to take inputs.\n" +
                 "#Example:\n" +
-                "#Input $FIRSTNUMBER\n" +
+                "#INPUT $FIRSTNUMBER\n" +
                 "#SHOOT $FIRSTNUMBER + 3\n" +
                 "#OR\n" +
-                "#Input $FIRSTNUMBER\n" +
+                "#INPUT $FIRSTNUMBER\n" +
                 "#$CALCULATEDVALUE = $FIRSTNUMBER + 3\n" +
                 "#SHOOT $CALCULATEDVALUE\n\n" +
                 "INPUT $MYVARIABLE\n" +
@@ -216,7 +216,7 @@ namespace Shoot
                 "After the test expression THEN keyword should be used to jump to body. " +
                 "Body should also end with the ENDIF keyword.\n" +
                 "Inputs: Single integer number. \n" +
-                "Output: Shoot 1 for odd, 0 for even number.",
+                "Output: SHOOT 1 for odd, 0 for even number.",
                 // Mission default code
                 "#Use IF, THEN and ENDIF keywords.\n" +
                 "#Example:\n" +
@@ -268,7 +268,7 @@ namespace Shoot
                 "DEBUG keyword is used for printing any variable, expression or value to debug screen. " +
                 "SHOOT keyword can also prints the results to the debug screen. " +
                 "You can choose printing SHOOT keyword outputs or not.\n" +
-                "Relax, Debug keyword will not effect any of your return values.\n" +
+                "Relax, DEBUG keyword will not effect any of your return values.\n" +
                 "Inputs: Single integer number. " +
                 "Output: SHOOT 1 for odd, 0 for even number.",
                 // Mission default code

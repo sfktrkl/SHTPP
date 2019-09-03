@@ -64,19 +64,19 @@
             this.debugInfo.Name = "debugInfo";
             this.debugInfo.Size = new System.Drawing.Size(239, 26);
             this.debugInfo.TabIndex = 10;
-            this.debugInfo.Text = "DEBUG SHOOT = ???";
+            this.debugInfo.Text = "SHOOT Debug = ???";
             this.debugInfo.Click += new System.EventHandler(this.debugInfo_Click);
             // 
             // title
             // 
-            this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Algerian", 24F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(330, 9);
+            this.title.Location = new System.Drawing.Point(12, 9);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(121, 35);
+            this.title.Size = new System.Drawing.Size(760, 35);
             this.title.TabIndex = 11;
             this.title.Text = "Debug";
+            this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DebugForm
             // 
