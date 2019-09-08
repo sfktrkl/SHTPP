@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace Shoot
 {
@@ -22,6 +23,14 @@ namespace Shoot
                 this.inputs = inputs;
                 this.solutions = solutions;
             }
+
+            public bool valid()
+            {
+                if (this.name != null)
+                    return true;
+                else
+                    return false;
+            }
         }
 
         static MissionDatabase()
@@ -41,7 +50,10 @@ namespace Shoot
             else if (mission == "6")
                 return Tutorial6();
             else
+            {
+                MessageBox.Show("Mission does not exist!", "Mission", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return new Data();
+            }
         }
 
         private static Data Tutorial1()

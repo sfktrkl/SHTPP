@@ -24,7 +24,7 @@ namespace Shoot
 
             this.missionNote.Text = mission.data.note;
 
-            string content = FileReadWrite.ReadFile(this.Text.ToString());
+            string content = FileReadWrite.ReadFile(mission.data.name);
             if (content != null)
                 this.codeText.Text = content;
             else
@@ -99,6 +99,11 @@ namespace Shoot
 
             for (int i = 0; i < outputs.Length; i++)
             {
+                if (outputs.Length != solutions.Length)
+                {
+                    success = false;
+                    break;
+                }
                 if (outputs[i] != solutions[i])
                 {
                     success = false;
@@ -120,7 +125,7 @@ namespace Shoot
         private void save_Click(object sender, System.EventArgs e)
         {
             string content = this.codeText.Text.ToUpper();
-            FileReadWrite.WriteFile(content, this.Text.ToString());
+            FileReadWrite.WriteFile(content, mission.data.name);
         }
 
         private void back_Click(object sender, EventArgs e)

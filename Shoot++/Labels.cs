@@ -77,7 +77,9 @@ namespace Shoot
 
         virtual protected void ClickMouse(object sender, MouseEventArgs e)
         {
-            UiManager.CreateGameForm(new Mission(this.Tag.ToString()));
+            var mission = new Mission(this.Tag.ToString());
+            if (mission.data.valid())
+                UiManager.CreateGameForm(mission);
         }
     }
 
