@@ -47,6 +47,8 @@ namespace Shoot
                 return Tutorial3();
             else if (mission == "4")
                 return Tutorial4();
+            else if (mission == "5")
+                return Tutorial5();
             else if (mission == "6")
                 return Tutorial6();
             else
@@ -223,7 +225,7 @@ namespace Shoot
                 // Mission Name
                 "Tutorial 4",
                 // Mission Note
-                "Aim of this tutorial is to learn how to use if else statements. " +
+                "Aim of this tutorial is to learn how to use IF ELSE statements. " +
                 "IF keyword is used for evaluating the test expression. " +
                 "After the test expression THEN keyword should be used to jump to body. " +
                 "Body should also end with the ENDIF keyword.\n" +
@@ -240,7 +242,62 @@ namespace Shoot
                 "   SHOOT 0\n" +
                 "ELSE\n" +
                 "   SHOOT 1\n" +
-                "ENDIF\n\n",
+                "ENDIF",
+                inputs,
+                // Mission solutions
+                Solutions()
+                );
+        }
+
+        private static Data Tutorial5()
+        {
+            Func<int[]> CreateInputs = delegate
+            {
+                int[] created = new int[1];
+                Random randomNumber = new Random();
+                created[0] = randomNumber.Next(0, 10);
+                return created;
+            };
+
+            int[] inputs = CreateInputs();
+
+            Func<int[]> Solutions = delegate
+            {
+                int[] solutions = new int[5];
+
+                for (int i = 0; i < 5; i++)
+                    solutions[i] = inputs[0];
+
+                return solutions;
+            };
+
+            return new Data(
+                //Mission number
+                5,
+                // Mission Name
+                "Tutorial 5",
+                // Mission Note
+                "Aim of this tutorial is to learn how to use LOOP keyword. " +
+                "LOOP keyword is used to execute the code block several times. " +
+                "After LOOP keyword test expression should be given and " +
+                "THEN keyword should be used to jump to body. " +
+                "Body should also end with the ENDLOOP keyword.\n" +
+                "Inputs: Single integer number. " +
+                "Output: SHOOT this number three times.",
+                // Mission default code
+                "#Use LOOP, THEN and ENDLOOP keywords.\n" +
+                "#Example:\n" +
+                "#$NUMBER = 1\n" +
+                "#LOOP $NUMBER == 1 THEN\n" +
+                "#   SHOOT $NUMBER\n" +
+                "#   $NUMBER = 2\n" +
+                "#ENDLOOP\n\n" +
+                "INPUT $NUMBER\n\n" +
+                "$COUNT = 5\n" + 
+                "LOOP $COUNT > 0 THEN\n" +
+                "   SHOOT $NUMBER\n" +
+                "   $COUNT = $COUNT - 1\n" +
+                "ENDLOOP",
                 // Mission inputs
                 inputs,
                 // Mission solutions

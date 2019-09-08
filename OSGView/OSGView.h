@@ -36,6 +36,7 @@ private:
     osg::Geode* LoadTutorial2();
     osg::Geode* LoadTutorial3();
     osg::Geode* LoadTutorial4();
+    osg::Geode* LoadTutorial5();
 
     osg::ref_ptr<osg::Group> root;
 
