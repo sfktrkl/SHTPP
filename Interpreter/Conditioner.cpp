@@ -31,34 +31,8 @@ const void Interpreter::Conditioner(size_t i, toks& tokens, iftoks& ifTokens, va
             && (tokens[i].first == TokenType::EXPRESSION || tokens[i].first == TokenType::NUMBER || tokens[i].first == TokenType::VARIABLE)
             && !isIFBody && !isELSEBody)
         {
-            std::string first, second;
-            if (tokens[i].first == TokenType::EXPRESSION)
-                first = EvaluateExpression(tokens[i].second, variables);
-            else if (tokens[i].first == TokenType::NUMBER)
-                first = tokens[i].second;
-            else if (tokens[i].first == TokenType::VARIABLE)
-                first = variables[tokens[i].second].getValue();
-
-            if (tokens[i + 2].first == TokenType::EXPRESSION)
-                second = EvaluateExpression(tokens[i + 2].second, variables);
-            else if (tokens[i + 2].first == TokenType::NUMBER)
-                second = tokens[i + 2].second;
-            else if (tokens[i + 2].first == TokenType::VARIABLE)
-                second = variables[tokens[i + 2].second].getValue();
-
-            if (tokens[i + 1].first == TokenType::EQEQ)
-            {
-                if (first == second)
-                {
-                    tokens[i].first = TokenType::CONDITION;
-                    tokens[i].second = "TRUE";
-                }
-                else
-                {
-                    tokens[i].first = TokenType::CONDITION;
-                    tokens[i].second = "FALSE";
-                }
-            }
+            tok result = CheckCondition(tokens[i], tokens[i + 2], tokens[i + 1], variables);
+            tokens[i] = result;
             tokens.erase(tokens.begin() + i + 1);
             tokens.erase(tokens.begin() + i + 1);
             i++;

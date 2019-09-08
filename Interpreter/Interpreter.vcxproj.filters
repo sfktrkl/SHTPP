@@ -27,6 +27,9 @@
     <ClCompile Include="Supplement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Looper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interpreter.h">

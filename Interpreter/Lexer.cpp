@@ -95,7 +95,85 @@ const void Interpreter::Lexer(const std::string& fileContents, toks& tokens)
                 expression = "";
             }
             else if (tokens.back().first == TokenType::EQUALS)
-                tokens.back().first = TokenType::EQEQ;
+                tokens.back().first = TokenType::EQUAL_TO;
+            else if (tokens.back().first == TokenType::NOT)
+                tokens.back().first = TokenType::NOT_EQUAL_TO;
+            else if (tokens.back().first == TokenType::GREATER)
+                tokens.back().first = TokenType::GREATER_OR_EQUAL;
+            else if (tokens.back().first == TokenType::LESS)
+                tokens.back().first = TokenType::LESS_OR_EQUAL;
+            token = "";
+        }
+        else if (token == "<" && state == false)
+        {
+            if (variable != "" && variableStarted == true)
+            {
+                tokens.push_back(std::make_pair(TokenType::VARIABLE, variable));
+                tokens.push_back(std::make_pair(TokenType::LESS, ""));
+                variable = "";
+                variableStarted = false;
+            }
+            else if (expression != "" && isExpression == true)
+            {
+                tokens.push_back(std::make_pair(TokenType::EXPRESSION, expression));
+                tokens.push_back(std::make_pair(TokenType::LESS, ""));
+                expression = "";
+                isExpression = false;
+            }
+            else if (expression != "" && isExpression == false)
+            {
+                tokens.push_back(std::make_pair(TokenType::NUMBER, expression));
+                tokens.push_back(std::make_pair(TokenType::LESS, ""));
+                expression = "";
+            }
+            token = "";
+        }
+        else if (token == ">" && state == false)
+        {
+            if (variable != "" && variableStarted == true)
+            {
+                tokens.push_back(std::make_pair(TokenType::VARIABLE, variable));
+                tokens.push_back(std::make_pair(TokenType::GREATER, ""));
+                variable = "";
+                variableStarted = false;
+            }
+            else if (expression != "" && isExpression == true)
+            {
+                tokens.push_back(std::make_pair(TokenType::EXPRESSION, expression));
+                tokens.push_back(std::make_pair(TokenType::GREATER, ""));
+                expression = "";
+                isExpression = false;
+            }
+            else if (expression != "" && isExpression == false)
+            {
+                tokens.push_back(std::make_pair(TokenType::NUMBER, expression));
+                tokens.push_back(std::make_pair(TokenType::GREATER, ""));
+                expression = "";
+            }
+            token = "";
+        }
+        else if (token == "!" && state == false)
+        {
+            if (variable != "" && variableStarted == true)
+            {
+                tokens.push_back(std::make_pair(TokenType::VARIABLE, variable));
+                tokens.push_back(std::make_pair(TokenType::NOT, ""));
+                variable = "";
+                variableStarted = false;
+            }
+            else if (expression != "" && isExpression == true)
+            {
+                tokens.push_back(std::make_pair(TokenType::EXPRESSION, expression));
+                tokens.push_back(std::make_pair(TokenType::NOT, ""));
+                expression = "";
+                isExpression = false;
+            }
+            else if (expression != "" && isExpression == false)
+            {
+                tokens.push_back(std::make_pair(TokenType::NUMBER, expression));
+                tokens.push_back(std::make_pair(TokenType::NOT, ""));
+                expression = "";
+            }
             token = "";
         }
         else if (token == "$" && state == false)
@@ -138,6 +216,16 @@ const void Interpreter::Lexer(const std::string& fileContents, toks& tokens)
             token = "";
         }
         else if (token == "ENDIF")
+        {
+            tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
+            token = "";
+        }
+        else if (token == "ENDLOOP")
+        {
+            tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
+            token = "";
+        }
+        else if (token == "LOOP")
         {
             tokens.push_back(std::make_pair(TokenType::KEYWORD, token));
             token = "";

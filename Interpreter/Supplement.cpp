@@ -25,6 +25,75 @@ const std::string Interpreter::OpenFile(const char* filename)
     return str;
 }
 
+const tok Interpreter::CheckCondition(tok& leftOperand, tok& rightOperand, tok& operatorTok, vars& variables)
+{
+    std::string first, second;
+    if (leftOperand.first == TokenType::EXPRESSION)
+        first = EvaluateExpression(leftOperand.second, variables);
+    else if (leftOperand.first == TokenType::NUMBER)
+        first = leftOperand.second;
+    else if (leftOperand.first == TokenType::VARIABLE)
+        first = variables[leftOperand.second].getValue();
+
+    if (rightOperand.first == TokenType::EXPRESSION)
+        second = EvaluateExpression(rightOperand.second, variables);
+    else if (rightOperand.first == TokenType::NUMBER)
+        second = rightOperand.second;
+    else if (rightOperand.first == TokenType::VARIABLE)
+        second = variables[rightOperand.second].getValue();
+
+    tok trueTok = std::make_pair(TokenType::CONDITION, "TRUE");
+    tok falseTok = std::make_pair(TokenType::CONDITION, "FALSE");
+
+    if (operatorTok.first == TokenType::EQUAL_TO)
+    {
+        if (std::stoi(first) == std::stoi(second))
+            return trueTok;
+        else
+            return falseTok;
+    }
+    if (operatorTok.first == TokenType::NOT_EQUAL_TO)
+    {
+        if (std::stoi(first) != std::stoi(second))
+            return trueTok;
+        else
+            return falseTok;
+    }
+    else if (operatorTok.first == TokenType::GREATER)
+    {
+        if (std::stoi(first) > std::stoi(second))
+            return trueTok;
+        else
+            return falseTok;
+    }
+    else if (operatorTok.first == TokenType::LESS)
+    {
+        if (std::stoi(first) < std::stoi(second))
+            return trueTok;
+        else
+            return falseTok;
+    }
+    else if (operatorTok.first == TokenType::GREATER_OR_EQUAL)
+    {
+        if (std::stoi(first) >= std::stoi(second))
+            return trueTok;
+        else
+            return falseTok;
+    }
+    else if (operatorTok.first == TokenType::LESS_OR_EQUAL)
+    {
+        if (std::stoi(first) <= std::stoi(second))
+            return trueTok;
+        else
+            return falseTok;
+    }
+    else
+    {
+        AddDebugOutput("SOZ DIZIMI HATASI: OPERATOR BULUNAMADI!", true);
+        return falseTok;
+    }
+}
+
 const std::string Interpreter::EvaluateExpression(std::string expression, vars& variables)
 {
     expression += "q";

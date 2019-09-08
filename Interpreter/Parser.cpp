@@ -200,6 +200,18 @@ const void Interpreter::Parser(toks& tokens, vars& variables)
                 return;
             }
         }
+        else if (tokens[i].first == TokenType::KEYWORD && tokens[i].second == "LOOP")
+        {
+            if (tokens.size() > i + 1)
+            {
+                Looper(i, tokens, variables);
+            }
+            else
+            {
+                AddDebugOutput("SOZ DIZIMI HATASI: IFADE BULUNAMADI!", true);
+                return;
+            }
+        }
         else if (tokens[i].first == TokenType::STATEMENT)
         {
             if (tokens[i + 1].first == TokenType::CONDITION && tokens[i + 1].second == "TRUE")

@@ -14,9 +14,16 @@ enum class TokenType
     EXPRESSION,
     VARIABLE,
     EQUALS,
-    EQEQ,
+    NOT,
+    EQUAL_TO,
+    NOT_EQUAL_TO,
+    LESS,
+    GREATER,
+    LESS_OR_EQUAL,
+    GREATER_OR_EQUAL,
     STATEMENT,
-    CONDITION
+    CONDITION,
+    LOOP
 };
 
 enum class VariableType

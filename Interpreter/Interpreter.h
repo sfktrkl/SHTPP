@@ -2,7 +2,8 @@
 #include "Required.h"
 #include "Variable.h"
 
-typedef std::vector<std::pair<TokenType, std::string>> toks;
+typedef std::pair<TokenType, std::string> tok;
+typedef std::vector<tok> toks;
 typedef std::unordered_map<std::string, Variable> vars;
 typedef std::vector<std::tuple<toks, toks>> iftoks;
 
@@ -40,8 +41,10 @@ private:
     void AddOutput(std::string text);
     const std::string OpenFile(const char* filename);
     const std::string EvaluateExpression(std::string expression, vars& variables);
+    const tok CheckCondition(tok& leftOperand, tok& rightOperand, tok& operatorTok, vars& variables);
     const void Lexer(const std::string& fileContents, toks& tokens);
     const void Conditioner(size_t i, toks& tokens, iftoks& ifTokens, vars& variables);
+    const void Looper(size_t i, toks& tokens, vars& variables);
     const void Parser(toks& tokens, vars& variables);
     const bool checkKey(const vars& variables, const std::string key);
     const std::pair<VariableType, std::string> Scan(vars& variables);
