@@ -59,19 +59,21 @@ namespace InterpreterTests
 
             std::ostringstream ss;
             ss << "INPUT $MYVARIABLE\n" <<
-                "SHOOT 3 + $MYVARIABLE";
+                "SHOOT 3 + $MYVARIABLE\n" <<
+                "SHOOT $MYVARIABLE + 3";
             fileContents = ss.str();
 
             srand((int)time(0));
-            int randomNumber = rand();
+            int randomNumber = rand() % 100;
             inputs = { randomNumber };
 
             Begin();
 
             std::vector<int> outputs = interpreter->GiveOutputs();
 
-            Assert::AreEqual(size_t(1), outputs.size());
+            Assert::AreEqual(size_t(2), outputs.size());
             Assert::AreEqual(randomNumber + 3, outputs[0]);
+            Assert::AreEqual(randomNumber + 3, outputs[1]);
         }
 
         TEST_METHOD(IF)
@@ -200,6 +202,61 @@ namespace InterpreterTests
             Assert::AreEqual("DEBUG: \"STRING\": GOOD GAME", debugOutputs[3].c_str());
             Assert::AreEqual("DEBUG: \"VARIABLE\": RESULT = " + std::to_string(randomNumber % 2), debugOutputs[4]);
             Assert::AreEqual("DEBUG: \"STRING\": HAVE FUN", debugOutputs[5].c_str());
+        }
+
+        TEST_METHOD(LOOP)
+        {
+            filePath = "..\\TestFiles\\LOOP.sfk";
+
+            std::ostringstream ss;
+            ss << "$NUMBER = 7\n" <<
+                "LOOP $NUMBER >= 5 THEN\n" <<
+                "   SHOOT $NUMBER\n" <<
+                "   $NUMBER = $NUMBER - 1\n" <<
+                "ENDLOOP";
+
+            fileContents = ss.str();
+
+            inputs = { };
+
+            Begin();
+
+            std::vector<int> outputs = interpreter->GiveOutputs();
+
+            Assert::AreEqual(size_t(3), outputs.size());
+            Assert::AreEqual(7, outputs[0]);
+            Assert::AreEqual(6, outputs[1]);
+            Assert::AreEqual(5, outputs[2]);
+        }
+
+        TEST_METHOD(NESTEDLOOP)
+        {
+            filePath = "..\\TestFiles\\NESTEDLOOP.sfk";
+
+            std::ostringstream ss;
+            ss << "$NUMBER = 2\n" <<
+                "LOOP $NUMBER < 6 THEN\n" <<
+                "   SHOOT 0\n" <<
+                "   $NUMBER = $NUMBER + 1\n" <<
+                "   LOOP $NUMBER < 5 THEN\n" <<
+                "       SHOOT 1\n" <<
+                "       $NUMBER = $NUMBER + 1\n" <<
+                "   ENDLOOP\n" <<
+                "ENDLOOP";
+
+            fileContents = ss.str();
+
+            inputs = { };
+
+            Begin();
+
+            std::vector<int> outputs = interpreter->GiveOutputs();
+
+            Assert::AreEqual(size_t(4), outputs.size());
+            Assert::AreEqual(0, outputs[0]);
+            Assert::AreEqual(1, outputs[1]);
+            Assert::AreEqual(1, outputs[2]);
+            Assert::AreEqual(0, outputs[3]);
         }
     };
 }
