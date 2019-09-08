@@ -33,7 +33,7 @@ namespace Shoot
             solutions = mission.data.solutions;
 
             viewer.SetMission(mission.data.number);
-            GiveInputsToViewer(mission.data.inputs);
+            viewer.GiveInputs(mission.data.inputs);
 
             renderArea.Paint += new PaintEventHandler(Painter);
         }
@@ -59,7 +59,7 @@ namespace Shoot
             solutions = mission.data.solutions;
 
             viewer.SetMission(mission.data.number);
-            GiveInputsToViewer(mission.data.inputs);
+            viewer.GiveInputs(mission.data.inputs);
         }
 
         private void Painter(object sender, PaintEventArgs e)
@@ -70,48 +70,13 @@ namespace Shoot
 
         private void CallInterpreter(string file, int[] inputValues)
         {
-            byte[] bytes = System.Text.Encoding.ASCII.GetBytes(file);
-
-            unsafe
-            {
-                fixed (byte* fileByte = bytes)
-                {
-                    sbyte* fileString = (sbyte*)fileByte;
-                    interpreter = new InterpreterClassWrapper(fileString);
-                }
-
-                fixed (int* inputs = inputValues)
-                {
-                    interpreter.GiveInputs(inputs);
-                }
-            }
+            interpreter = new InterpreterClassWrapper(file);
+            interpreter.GiveInputs(inputValues);
 
             //Disabled, since debugInfo button takes over the task.
             //interpreter.SetDebugMode(isDebugShoot);
 
             interpreter.Execute();
-        }
-
-        private void GiveOutputsToViewer(int[] outputValues)
-        {
-            unsafe
-            {
-                fixed (int* outputs = outputValues)
-                {
-                    viewer.GiveOutputs(outputs);
-                }
-            }
-        }
-
-        private void GiveInputsToViewer(int[] inputValues)
-        {
-            unsafe
-            {
-                fixed (int* inputs = inputValues)
-                {
-                    viewer.GiveInputs(inputs);
-                }
-            }
         }
 
         private void run_Click(object sender, System.EventArgs e)
@@ -128,7 +93,7 @@ namespace Shoot
             if (UiManager.debugForm != null)
                 UiManager.debugForm.GetDebugOutputs(debugOutputs);
 
-            GiveOutputsToViewer(outputs);
+            viewer.GiveOutputs(outputs);
 
             bool success = true;
 

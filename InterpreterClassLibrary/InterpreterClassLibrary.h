@@ -4,18 +4,19 @@
 #include "../Interpreter/Parser.cpp"
 #include "../Interpreter/Lexer.cpp"
 #include "../Interpreter/Supplement.cpp"
+#include "../Interpreter/Looper.cpp"
 using namespace System;
 
 namespace InterpreterClassLibrary {
     public ref class InterpreterClassWrapper
     {
     public:
-        InterpreterClassWrapper(const char* file);
+        InterpreterClassWrapper(String^ file);
         void Execute();
 
         array<int>^ TakeOutputs();
         array<String^>^ TakeDebugOutputs();
-        void GiveInputs(int* inputs);
+        void GiveInputs(array<int>^ inputs);
         void SetDebugMode(bool isDebugShoot);
     private:
         Interpreter* interpreter;

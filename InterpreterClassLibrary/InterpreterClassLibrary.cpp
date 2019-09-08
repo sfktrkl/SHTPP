@@ -4,9 +4,14 @@
 
 using namespace InterpreterClassLibrary;
 
-InterpreterClassWrapper::InterpreterClassWrapper(const char* file)
+InterpreterClassWrapper::InterpreterClassWrapper(String^ file)
 {
-    interpreter = new Interpreter(file);
+    char* fileName = new char[file->Length];
+    int i;
+    for (i = 0; i < file->Length; i++)
+        fileName[i] = file[i];
+    fileName[i] = static_cast<char>('\0');
+    interpreter = new Interpreter(fileName);
 }
 
 void InterpreterClassWrapper::Execute()
@@ -38,9 +43,15 @@ array<String^>^ InterpreterClassWrapper::TakeDebugOutputs()
     return result;
 }
 
-void InterpreterClassWrapper::GiveInputs(int* inputs)
+void InterpreterClassWrapper::GiveInputs(array<int>^ inputs)
 {
-    std::vector<int> inputsVector(inputs, inputs + sizeof inputs / sizeof inputs[0]);
+    std::vector<int> inputsVector;
+
+    for (int i = 0; i < inputs->Length; i++)
+    {
+        int value = inputs[i];
+        inputsVector.push_back(value);
+    }
 
     interpreter->TakeInputs(inputsVector);
 }
