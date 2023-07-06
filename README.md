@@ -2,7 +2,7 @@
 
 [![Download](https://img.shields.io/static/v1?label=Download&message=CLICK&color=blue)](https://ci.appveyor.com/project/sfktrkl/shootpp/build/artifacts)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/tckmmm81ucdh9mrp/branch/master?svg=true)](https://ci.appveyor.com/project/sfktrkl/shootpp/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/tckmmm81ucdh9mrp/branch/main?svg=true)](https://ci.appveyor.com/project/sfktrkl/shootpp/branch/master)
 ![GitHub repo size](https://img.shields.io/github/repo-size/sfktrkl/Shootpp)
 ![GitHub](https://img.shields.io/github/license/sfktrkl/Shootpp)
 
